@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint app.js",
+    "fix": "eslint --fix app.js"
   },
   "keywords": [],
   "author": "",
