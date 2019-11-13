@@ -1,0 +1,29 @@
+{
+  "name": "account-aaa",
+  "version": "1.0.0",
+  "description": "2019 EPAM JSA ShenZhen Project Team Peridot - account feature",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install & (cd frontend && npm install) & (cd backend && npm install)",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "(cd frontend && npm run lint) & (cd backend && npm run lint)",
+    "fix": "(cd frontend && npm run fix) & (cd backend && npm run fix)"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/green-fox-academy/account-AAA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/green-fox-academy/account-AAA/issues"
+  },
+  "homepage": "https://github.com/green-fox-academy/account-AAA#readme",
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {}
+}
