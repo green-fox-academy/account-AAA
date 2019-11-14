@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { CreateNewDeposit } from './components/CreateNewDeposit';
+import { StyleSheet, View } from 'react-native';
+import CreateNewDeposit from './src/components/CreateNewDeposit';
 
 export default function App() {
   const styles = StyleSheet.create({

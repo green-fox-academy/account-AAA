@@ -9,4 +9,4 @@ function CreateNewDeposit() {
     )
 }
 
-export default { CreateNewDeposit };
+export default CreateNewDeposit;
