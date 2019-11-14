@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "lint": "eslint app.js",
-    "fix": "eslint --fix app.js"
+    "fix": "eslint --fix app.js",
+    "createTable": "node ./db/migration.js add migration",
+    "addSeed": "node ./db/migration.js add seed",
+    "dbRefresh": "node ./db/migration.js refresh"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,9 @@
   "devDependencies": {
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "mysql-migrations": "^1.0.6"
   }
 }

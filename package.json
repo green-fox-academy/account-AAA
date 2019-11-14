@@ -6,11 +6,13 @@
   "scripts": {
     "install-all": "npm install & (cd frontend && npm install) & (cd backend && npm install)",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "(cd frontend && npm run lint) & (cd backend && npm run lint)",
+    "lintFrontend": "cd frontend && npm run lint",
+    "lintBackend": "cd backend && npm run lint",
     "fix": "(cd frontend && npm run fix) & (cd backend && npm run fix)"
   },
   "pre-commit": [
-    "lint"
+    "lintFrontend",
+    "lintBackend"
   ],
   "repository": {
     "type": "git",
@@ -25,5 +27,6 @@
   "devDependencies": {
     "lerna": "^3.18.4",
     "pre-commit": "^1.2.2"
-  }
+  },
+  "dependencies": {}
 }
