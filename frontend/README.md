@@ -5,7 +5,7 @@ $ npm install
 ```
 
 Install all the dependencies
-include "dotenv", "react-native-material-ui"
+include "react-native-dotenv", "native-base"
 
 
 
@@ -13,4 +13,13 @@ include "dotenv", "react-native-material-ui"
 
 ```bash
 $ npm start
+```
+
+
+# Environment Variable use in react native
+The use of environment variables is not same as react
+to import the env, use code below
+
+```bash
+import { SOME_KEY } from 'react-native-dotenv'
 ```
