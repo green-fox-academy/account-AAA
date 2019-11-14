@@ -6,8 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint app.js",
-    "fix": "eslint --fix app.js"
+    "lint": "eslint . --ext .js",
+    "fix": "eslint --fix . --ext .js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
