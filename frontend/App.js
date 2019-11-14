@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import CreateNewDeposit from './src/components/CreateNewDeposit';
 
 export default function App() {
   const styles = StyleSheet.create({
@@ -13,7 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <CreateNewDeposit />
     </View>
   );
 }
