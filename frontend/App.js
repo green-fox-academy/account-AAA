@@ -6,7 +6,7 @@ import HeaderBar from './src/components/HeaderBar';
 function App() {
   return (
     <Container>
-      <HeaderBar />
+      <HeaderBar pageTitle="New Account" />
       <CreateNewDeposit />
     </Container>
   );
