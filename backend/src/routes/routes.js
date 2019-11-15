@@ -1,30 +1,26 @@
 const express = require('express');
-let router = express.Router();
+const router = express.Router();
 
 router.post('/',(req, res)=>{
   let {deposit_name, user_id} = req.body;
   if(req.headers["content-type"]!=='application/json'){
-      res.setHeader('Content-Type', 'application/json');
-      res.json({
+    res.status(415).json({
           "message": "Content-type must be application/json."
       })
   }
-  let array = Object.keys(req.body);
-  let str = '';
-  array.forEach(e=>{
-    if (array.includes(e)==false){
-      str = str + `<${e}>`;
+  let req_body_keys = Object.keys(req.body);
+  let curr_key = '';
+  req_body_keys.forEach(e=>{
+    if (!req_body_keys.includes(e)){
+      curr_key = curr_key + `<${e}>`;
     }
   })
   if (str.length!=0){
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
-      "message": `Missing ${str}.`
+    res.status(400).json({
+      "message": `Missing ${curr_key}.`
   })
   }
-    res.status(200);
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
+    res.status(200).json({
         "id": user_id,
     })
 })
