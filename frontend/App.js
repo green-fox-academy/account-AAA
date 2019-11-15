@@ -1,20 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Container } from 'native-base';
 import CreateNewDeposit from './src/components/CreateNewDeposit';
+import HeaderBar from './src/components/HeaderBar';
 
-export default function App() {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-
+function App() {
   return (
-    <View style={styles.container}>
+    <Container>
+      <HeaderBar pageTitle="New Account" />
       <CreateNewDeposit />
-    </View>
+    </Container>
   );
 }
+
+export default App;
