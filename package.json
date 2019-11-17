@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/green-fox-academy/account-AAA#readme",
   "devDependencies": {
+    "jest": "^24.9.0",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {}

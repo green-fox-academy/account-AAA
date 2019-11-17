@@ -12,3 +12,4 @@ app.listen(port, () => {
   console.log(`we are in port: ${port}`);
   /* eslint-enable no-alert */
 });
+module.exports = app
