@@ -11,7 +11,7 @@ describe('Post Endpoints', ()=>{
       })
     expect(res.statusCode).toEqual(200)
   })
-  it ('should return a new post', async () => {
+  it ('should return a new post - lack request body', async () => {
     const res = await request(app)
       .post('/deposit')
       .send({
