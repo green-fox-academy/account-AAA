@@ -44,6 +44,8 @@
   },
   "private": true,
   "standard": {
-    "env": ["mocha"]
+    "env": [
+      "mocha"
+    ]
   }
 }

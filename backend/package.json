@@ -38,6 +38,8 @@
     ]
   },
   "standard": {
-    "env": ["mocha"]
+    "env": [
+      "mocha"
+    ]
   }
 }
