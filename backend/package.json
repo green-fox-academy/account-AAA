@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "node server.js",
     "lint": "eslint . --ext .js",
     "fix": "eslint --fix . --ext .js",
     "createTable": "node ./db/migration.js add migration",
@@ -22,10 +23,19 @@
     "mysql-migrations": "^1.0.6"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "express": "^4.17.1"
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "standard": {
     "env": ["mocha"]
