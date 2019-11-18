@@ -24,7 +24,7 @@ export default function HeaderBar({ pageTitle, navi }) {
         transparent
         onPress={() => navi.navigate('NewAccount')}
       >
-        <Icon name="menu" />
+        <Icon name="add" />
       </Button>
     );
   };
