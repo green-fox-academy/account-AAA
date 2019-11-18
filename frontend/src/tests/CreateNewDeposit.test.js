@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CreateNewDeposit from './CreateNewDeposit';
+import CreateNewDeposit from '../components/CreateNewDeposit';
 
 describe('<CreateNewDeposit />', () => {
   it('has 3 child', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import HeaderBar from './HeaderBar';
+import HeaderBar from '../components/HeaderBar';
 
 describe('<HeaderBar />', () => {
   it('has 1 child', () => {
