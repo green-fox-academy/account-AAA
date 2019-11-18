@@ -4,10 +4,10 @@
   "description": "2019 EPAM JSA ShenZhen Project Team Peridot - account feature",
   "main": "index.js",
   "scripts": {
-    "install-all": "npm install & (cd frontend && npm install) & (cd backend && npm install)",
+    "install-all": "npm install && npm-recursive-install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "(cd frontend && npm run lint) & (cd backend && npm run lint)",
-    "fix": "(cd frontend && npm run fix) & (cd backend && npm run fix)"
+    "lint": "concurrently \"cd frontend && npm run lint\" \"cd backend && npm run lint\"",
+    "fix": "concurrently \"cd frontend && npm run fix\" \"cd backend && npm run fix\""
   },
   "pre-commit": [
     "lint"
@@ -23,8 +23,10 @@
   },
   "homepage": "https://github.com/green-fox-academy/account-AAA#readme",
   "devDependencies": {
-    "jest": "^24.9.0",
     "pre-commit": "^1.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "recursive-install": "^1.4.0"
+  }
 }

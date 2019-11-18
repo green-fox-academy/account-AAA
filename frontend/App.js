@@ -1,19 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Container } from 'native-base';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+import CreateNewDeposit from './src/components/CreateNewDeposit';
+import HeaderBar from './src/components/HeaderBar';
 
-export default function App() {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+function App() {
+  const [isReady, setIsReady] = React.useState(false);
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+  async function fontSet() {
+    /* eslint-disable global-require */
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    });
+    /* eslint-enable global-require */
+    setIsReady(true);
+  }
+
+  React.useEffect(() => { fontSet(); }, []);
+
+  return !isReady ? <AppLoading /> : (
+    <Container>
+      <HeaderBar pageTitle="New Account" />
+      <CreateNewDeposit />
+    </Container>
   );
 }
+
+export default App;

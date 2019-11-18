@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
   console.log(req.headers);
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
-      "message": 'Content-type must be application/json.',
+      message: 'Content-type must be application/json.',
     });
     return;
   }
@@ -21,14 +21,13 @@ router.post('/', (req, res) => {
   });
   if (missingKeys.length !== 0) {
     res.status(400).json({
-      "message": `Missing ${missingKeys}.`,
+      message: `Missing ${missingKeys}.`,
     });
     return;
   }
   res.status(200).json({
-    "id": user_id,
+    id: user_id,
   });
-  return;
 });
 // leave space for Internal Server Error
 module.exports = router;
