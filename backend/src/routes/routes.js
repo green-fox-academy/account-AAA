@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  const {deposit_name, user_id} = req.body;
+  const { deposit_name, user_id } = req.body;
+  console.log(req.headers);
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
       "message": 'Content-type must be application/json.',
