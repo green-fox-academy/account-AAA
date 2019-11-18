@@ -10,7 +10,7 @@ export default function AccountsScreen({ navigation }) {
   /* eslint-enable no-alert */
   return (
     <>
-      <HeaderBar pageTitle="Accounts" />
+      <HeaderBar pageTitle="Accounts" navi={navigation} />
       <Text>to be implemented: JSAP-1</Text>
     </>
   );

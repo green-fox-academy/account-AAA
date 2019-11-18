@@ -5,11 +5,37 @@ import {
 
 import PropTypes from 'prop-types';
 
-export default function HeaderBar({ pageTitle }) {
+export default function HeaderBar({ pageTitle, navi }) {
+  const handleGoBack = (event) => {
+    event.preventDefault();
+    if (pageTitle === 'New Account') {
+      navi.goBack();
+    } else {
+      navi.goBack();
+    }
+  };
+
+  const renderRightHeader = () => {
+    if (pageTitle === 'New Account') {
+      return null;
+    }
+    return (
+      <Button
+        transparent
+        onPress={() => navi.navigate('NewAccount')}
+      >
+        <Icon name="menu" />
+      </Button>
+    );
+  };
+
   return (
     <Header>
       <Left>
-        <Button transparent>
+        <Button
+          transparent
+          onPress={handleGoBack}
+        >
           <Icon name="arrow-back" />
         </Button>
       </Left>
@@ -17,9 +43,7 @@ export default function HeaderBar({ pageTitle }) {
         <Title>{ pageTitle }</Title>
       </Body>
       <Right>
-        <Button transparent>
-          <Icon name="menu" />
-        </Button>
+        {renderRightHeader()}
       </Right>
     </Header>
   );
@@ -27,4 +51,5 @@ export default function HeaderBar({ pageTitle }) {
 
 HeaderBar.propTypes = {
   pageTitle: PropTypes.string.isRequired,
+  navi: PropTypes.objectOf(PropTypes.object).isRequired,
 };
