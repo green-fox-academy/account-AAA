@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import CreateNewDeposit from './src/components/CreateNewDeposit';
-import HeaderBar from './src/components/HeaderBar';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from './src/screens/HomeScreen';
+import AccountsScreen from './src/screens/AccountsScreen';
+import CreateNewAccountScreen from './src/screens/CreateNewAccountScreen';
 
-function App() {
-  const [isReady, setIsReady] = React.useState(false);
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Accounts: AccountsScreen,
+    NewAccount: CreateNewAccountScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    headerMode: 'none',
+  },
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default function App() {
+  const [isReady, setIsReady] = useState(false);
 
   async function fontSet() {
     /* eslint-disable global-require */
@@ -22,10 +39,7 @@ function App() {
 
   return !isReady ? <AppLoading /> : (
     <Container>
-      <HeaderBar pageTitle="New Account" />
-      <CreateNewDeposit />
+      <AppContainer />
     </Container>
   );
 }
-
-export default App;

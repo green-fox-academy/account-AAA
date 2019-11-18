@@ -25,10 +25,6 @@ export default function HeaderBar({ pageTitle }) {
   );
 }
 
-HeaderBar.defaultProps = {
-  pageTitle: 'Peridot Bank',
-};
-
 HeaderBar.propTypes = {
-  pageTitle: PropTypes.string,
+  pageTitle: PropTypes.string.isRequired,
 };
