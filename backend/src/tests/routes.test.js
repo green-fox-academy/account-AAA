@@ -1,4 +1,4 @@
-/* eslint-env mocha */
+/* global it, describe, expect */
 const request = require('supertest');
 const app = require('../server');
 

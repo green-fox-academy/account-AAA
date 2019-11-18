@@ -3,8 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  const { deposit_name, user_id } = req.body;
-  console.log(req.headers);
+  const { userId } = req.body;
   if (req.headers['content-type'] !== 'application/json') {
     res.status(415).json({
       message: 'Content-type must be application/json.',
@@ -13,7 +12,7 @@ router.post('/', (req, res) => {
   }
   const reqBodykeys = Object.keys(req.body);
   let missingKeys = '';
-  const keysArr = ['deposit_name', 'user_id'];
+  const keysArr = ['deposit_name', 'userId'];
   keysArr.forEach((item) => {
     if (!reqBodykeys.includes(item)) {
       missingKeys += `${item}`;
@@ -26,7 +25,7 @@ router.post('/', (req, res) => {
     return;
   }
   res.status(200).json({
-    id: user_id,
+    id: userId,
   });
 });
 // leave space for Internal Server Error

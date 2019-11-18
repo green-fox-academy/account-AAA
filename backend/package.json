@@ -3,18 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "standard": {
-    "globals": [
-      "describe",
-      "context",
-      "before",
-      "beforeEach",
-      "after",
-      "afterEach",
-      "it",
-      "expect"
-    ]
-  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -48,5 +36,8 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "standard": {
+    "env": ["mocha"]
   }
 }
