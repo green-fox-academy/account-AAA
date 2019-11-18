@@ -17,7 +17,7 @@ module.exports = {
       user: 'ubuntu',
       host: '18.176.56.81',
       key: './.ssh/JSAP-AAA-kp.pem',
-      ref: 'origin/master',
+      ref: 'origin/JSAP-18',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
       path: '/home/ubuntu/jsap-aaa',
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
