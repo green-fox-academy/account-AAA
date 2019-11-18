@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'backend',
+    name: 'jsap-aaa',
     script: './backend/app.js',
 
     env: {
@@ -20,7 +20,7 @@ module.exports = {
       ref: 'origin/JSAP-18',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
       path: '/home/ubuntu/jsap-aaa',
-      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
+      'post-deploy': 'npm run install-all && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };
