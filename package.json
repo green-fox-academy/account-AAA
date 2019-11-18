@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/green-fox-academy/account-AAA#readme",
   "devDependencies": {
-    "lerna": "^3.18.4",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
