@@ -1,8 +1,7 @@
 module.exports = {
   apps: [{
-    name: 'jsap-aaa',
-    script: './backend/app.js',
-
+    name: 'backend',
+    script: 'app.js',
     env: {
       NODE_ENV: 'development',
     },
@@ -15,12 +14,12 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: '18.176.56.81',
-      key: './.ssh/JSAP-AAA-kp.pem',
+      host: '3.112.214.248',
+      key: './.ssh/jsap_kp.pem',
       ref: 'origin/JSAP-18',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
-      path: '/home/ubuntu/jsap-aaa',
-      'post-deploy': 'npm run install-backend && pm2 startOrRestart ecosystem.config.js --env production',
+      path: '/home/ubuntu/account-AAA',
+      'post-deploy': 'cd backend && npm install && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };

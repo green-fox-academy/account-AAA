@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "concurrently \"cd frontend && npm run lint\" \"cd backend && npm run lint\"",
     "fix": "concurrently \"cd frontend && npm run fix\" \"cd backend && npm run fix\"",
-    "install-backend":"npm install & (cd backend && npm install)"
   },
   "pre-commit": [
     "lint"
