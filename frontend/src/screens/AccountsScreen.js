@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'native-base';
-import PropTypes from 'prop-types';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 import HeaderBar from '../components/HeaderBar';
 
 export default function AccountsScreen({ navigation }) {
@@ -10,12 +10,12 @@ export default function AccountsScreen({ navigation }) {
   /* eslint-enable no-alert */
   return (
     <>
-      <HeaderBar pageTitle="Accounts" navi={navigation} />
+      <HeaderBar pageTitle="Accounts" navigation={navigation} />
       <Text>to be implemented: JSAP-1</Text>
     </>
   );
 }
 
 AccountsScreen.propTypes = {
-  navigation: PropTypes.objectOf(PropTypes.object).isRequired,
+  navigation: navigationPropTypes.isRequired,
 };

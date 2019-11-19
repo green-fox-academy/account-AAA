@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text } from 'native-base';
-import PropTypes from 'prop-types';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
 // mockup accounts for testing purposes
 const accounts = [
@@ -41,5 +41,5 @@ export default function HomeScreen({ navigation }) {
 }
 
 HomeScreen.propTypes = {
-  navigation: PropTypes.objectOf(PropTypes.object).isRequired,
+  navigation: navigationPropTypes.isRequired,
 };

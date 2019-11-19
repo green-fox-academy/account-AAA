@@ -2,16 +2,17 @@ import React from 'react';
 import {
   Header, Left, Body, Right, Button, Icon, Title,
 } from 'native-base';
-
 import PropTypes from 'prop-types';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
-export default function HeaderBar({ pageTitle, navi }) {
+
+export default function HeaderBar({ pageTitle, navigation }) {
   const handleGoBack = (event) => {
     event.preventDefault();
     if (pageTitle === 'New Account') {
-      navi.goBack();
+      navigation.goBack();
     } else {
-      navi.goBack();
+      navigation.goBack();
     }
   };
 
@@ -22,7 +23,7 @@ export default function HeaderBar({ pageTitle, navi }) {
     return (
       <Button
         transparent
-        onPress={() => navi.navigate('NewAccount')}
+        onPress={() => navigation.navigate('NewAccount')}
       >
         <Icon name="add" />
       </Button>
@@ -51,5 +52,5 @@ export default function HeaderBar({ pageTitle, navi }) {
 
 HeaderBar.propTypes = {
   pageTitle: PropTypes.string.isRequired,
-  navi: PropTypes.objectOf(PropTypes.object).isRequired,
+  navigation: navigationPropTypes.isRequired,
 };
