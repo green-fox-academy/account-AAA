@@ -9,11 +9,7 @@ import navigationPropTypes from '../helpers/navigationPropTypes';
 export default function HeaderBar({ pageTitle, navigation }) {
   const handleGoBack = (event) => {
     event.preventDefault();
-    if (pageTitle === 'New Account') {
-      navigation.goBack();
-    } else {
-      navigation.goBack();
-    }
+    navigation.goBack();
   };
 
   const renderRightHeader = () => {

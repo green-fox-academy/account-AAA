@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from 'native-base';
 import navigationPropTypes from '../helpers/navigationPropTypes';
-import HeaderBar from '../components/HeaderBar';
 
 export default function AccountsScreen({ navigation }) {
   // static accounts data can be found at
@@ -10,7 +9,6 @@ export default function AccountsScreen({ navigation }) {
   /* eslint-enable no-alert */
   return (
     <>
-      <HeaderBar pageTitle="Accounts" navigation={navigation} />
       <Text>to be implemented: JSAP-1</Text>
     </>
   );
