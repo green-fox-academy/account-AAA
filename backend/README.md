@@ -41,7 +41,7 @@ This command will help you drop all data and update with new ones by running all
 ***
 ### PM2 deploy 
 
-Our public address is http://3.112.214.248:3000
+Our public address is http://3.112.128.181:3000
 
 How to use PM2 deploy 
 
