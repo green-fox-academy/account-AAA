@@ -37,3 +37,23 @@ This command will help you drop all data and update with new ones by running all
 - MYSQL_USER_NAME: database username
 - MYSQL_PASSWORD: database password
 - MYSQL_DATABASE: which database do you use
+
+***
+### PM2 deploy 
+
+Our public address is http://3.112.128.181:3000
+
+How to use PM2 deploy 
+
+use the following command under backend folder
+
+```bash
+$ npm run deploy
+```
+This command help you deploy your backend on aws
+After you typed this command you can copy and paste our public address which shows up and add end point to check if it is success or not.
+
+```bash
+$ npm run restart
+```
+This command help you restart our server.
