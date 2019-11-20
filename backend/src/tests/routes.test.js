@@ -1,14 +1,14 @@
 /* global it, describe, expect */
 const request = require('supertest');
-const app = require('../server');
+const app = require('../../server');
 
 describe('Post Endpoints', () => {
   it('should return a new post', async () => {
     const res = await request(app)
       .post('/deposit')
       .send({
-        deposit_name: 'name',
-        user_id: 2,
+        depositName: 'name',
+        userId: 2,
       });
     expect(res.statusCode).toEqual(200);
   });
@@ -16,7 +16,7 @@ describe('Post Endpoints', () => {
     const res = await request(app)
       .post('/deposit')
       .send({
-        deposit_name: 'name',
+        depositName: 'name',
       });
     expect(res.statusCode).toEqual(400);
   });
@@ -25,8 +25,8 @@ describe('Post Endpoints', () => {
       .post('/deposit')
       .set('content-type', 'string')
       .send(JSON.stringify({
-        deposit_name: 'name',
-        user_id: 2,
+        depositName: 'name',
+        userId: 2,
       }));
     expect(res.statusCode).toEqual(415);
   });
