@@ -2,14 +2,37 @@ import React from 'react';
 import {
   Header, Left, Body, Right, Button, Icon, Title,
 } from 'native-base';
-
 import PropTypes from 'prop-types';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
-export default function HeaderBar({ pageTitle }) {
+
+export default function HeaderBar({ pageTitle, navigation }) {
+  const handleGoBack = (event) => {
+    event.preventDefault();
+    navigation.goBack();
+  };
+
+  const renderRightHeader = () => {
+    if (pageTitle === 'New Account') {
+      return null;
+    }
+    return (
+      <Button
+        transparent
+        onPress={() => navigation.navigate('NewAccount')}
+      >
+        <Icon name="add" />
+      </Button>
+    );
+  };
+
   return (
     <Header>
       <Left>
-        <Button transparent>
+        <Button
+          transparent
+          onPress={handleGoBack}
+        >
           <Icon name="arrow-back" />
         </Button>
       </Left>
@@ -17,18 +40,13 @@ export default function HeaderBar({ pageTitle }) {
         <Title>{ pageTitle }</Title>
       </Body>
       <Right>
-        <Button transparent>
-          <Icon name="menu" />
-        </Button>
+        {renderRightHeader()}
       </Right>
     </Header>
   );
 }
 
-HeaderBar.defaultProps = {
-  pageTitle: 'Peridot Bank',
-};
-
 HeaderBar.propTypes = {
-  pageTitle: PropTypes.string,
+  pageTitle: PropTypes.string.isRequired,
+  navigation: navigationPropTypes.isRequired,
 };

@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import CreateNewDeposit from './src/components/CreateNewDeposit';
-import HeaderBar from './src/components/HeaderBar';
+import AppContainer from './src/navigations/navigation';
 
-function App() {
-  const [isReady, setIsReady] = React.useState(false);
+export default function App() {
+  const [isReady, setIsReady] = useState(false);
 
   async function fontSet() {
     /* eslint-disable global-require */
@@ -22,10 +21,7 @@ function App() {
 
   return !isReady ? <AppLoading /> : (
     <Container>
-      <HeaderBar pageTitle="New Account" />
-      <CreateNewDeposit />
+      <AppContainer />
     </Container>
   );
 }
-
-export default App;
