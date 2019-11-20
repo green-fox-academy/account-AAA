@@ -20,7 +20,7 @@ depositRoute.post('/', async (req, res) => {
 
   const { depositName, userId } = req.body;
   try {
-    const accountNameIsUnique = await validateAccountName(userId, depositName);
+    const accountNameIsUnique = await validateAccountName(depositName, userId);
     if (accountNameIsUnique) {
       const inserted = await insertAccount(depositName, userId);
       res.status(200).json({ id: inserted });
