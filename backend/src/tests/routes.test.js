@@ -1,8 +1,7 @@
 const request = require('supertest');
 const app = require('../../server');
 
-jest.mock('../helpers/validateAccountName');
-jest.mock('../models/insertAccount');
+jest.mock('../models/DatabaseActions');
 
 describe('Post Endpoints', () => {
   it('should return a new post', async () => {

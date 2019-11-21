@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
     "lint": "eslint . --ext .js",
     "fix": "eslint --fix . --ext .js",
     "createTable": "node ./db/migration.js add migration",
