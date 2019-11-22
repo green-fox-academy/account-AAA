@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
         "airbnb"
@@ -23,7 +24,8 @@
     "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "import/no-unresolved": "off",
-      "func-names": "off"
+      "func-names": "off",
+      "class-methods-use-this": "off"
     },
     "root": true
 }
