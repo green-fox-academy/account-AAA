@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import AccountCard from './AccountCard';
+import AccountCard from '../components/AccountCard';
 
 describe('<AccountCard />', () => {
   it('has 3 child', () => {
