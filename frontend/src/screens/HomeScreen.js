@@ -5,25 +5,25 @@ import navigationPropTypes from '../helpers/navigationPropTypes';
 // mockup accounts for testing purposes
 const accounts = [
   {
-    account_id: 1,
-    account_name: 'Main account',
-    user_id: 1,
-    balance: 3400,
-    interest_rate: '0.25%',
+    id: 1,
+    depositName: 'Main account',
+    userID: 1,
+    depositAmount: 3400,
+    interestRate: '0.25%',
   },
   {
-    account_id: 2,
-    account_name: 'Savings account',
-    user_id: 1,
-    balance: 0,
-    interest_rate: '2.5%',
+    id: 2,
+    depositName: 'Savings account',
+    userID: 1,
+    depositAmount: 0,
+    interestRate: '2.5%',
   },
   {
-    account_id: 3,
-    account_name: 'Investment account',
-    user_id: 1,
-    balance: 0,
-    interest_rate: '4%',
+    id: 3,
+    depositName: 'Investment account',
+    userID: 1,
+    depositAmount: 0,
+    interestRate: '4%',
   },
 
 ];
