@@ -45,3 +45,31 @@ describe('Post Endpoints', () => {
     expect(res.statusCode).toEqual(415);
   });
 });
+
+describe('Get all accounts Endpoint', () => {
+  it('should return all accounts', async () => {
+    const res = await request(app)
+      .get('/deposit/123');
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toEqual([
+      {
+        id: 1,
+        depositName: 'Main Account',
+        depositAmount: 0,
+        interestRate: 0,
+      },
+      {
+        id: 2,
+        depositName: 'Saving Account',
+        depositAmount: 0,
+        interestRate: 0,
+      },
+      {
+        id: 3,
+        depositName: 'Investment Account',
+        depositAmount: 0,
+        interestRate: 0,
+      },
+    ]);
+  });
+});

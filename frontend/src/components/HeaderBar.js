@@ -5,7 +5,6 @@ import {
 import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 
-
 export default function HeaderBar({ pageTitle, navigation }) {
   const handleGoBack = (event) => {
     event.preventDefault();
