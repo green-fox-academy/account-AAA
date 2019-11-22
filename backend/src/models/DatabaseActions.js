@@ -7,9 +7,7 @@ module.exports = class DatabaseActions {
     try {
       const insertAccountQuery = 'INSERT INTO accounts (depositName, userId) VALUES (?, ?);';
       const inserted = await this.execQuery(insertAccountQuery, [depositName, userId]);
-      return {
-        result: inserted.insertId,
-      };
+      return inserted.insertId;
     } catch (error) {
       throw error;
     }
@@ -17,11 +15,9 @@ module.exports = class DatabaseActions {
 
   async getAccountsByUserId(userId) {
     try {
-      const getAccountsByUserIdQuery = 'SELECT depositName FROM account WHERE userId = ?;';
+      const getAccountsByUserIdQuery = 'SELECT id, depositName, depositAmount, interestRate FROM accounts WHERE userId = ?;';
       const queryResult = await this.execQuery(getAccountsByUserIdQuery, [userId]);
-      return {
-        result: queryResult.map((res) => res.depositName),
-      };
+      return queryResult;
     } catch (error) {
       throw error;
     }
