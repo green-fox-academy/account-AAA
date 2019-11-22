@@ -5,31 +5,35 @@ module.exports = class DatabaseActions {
 
   async insertAccount(depositName, userId) {
     try {
-      const insertAccountQuery = 'INSERT INTO accounts(depositName, userId) VALUES (?, ?);';
+      const insertAccountQuery = 'INSERT INTO accounts (depositName, userId) VALUES (?, ?);';
       const inserted = await this.execQuery(insertAccountQuery, [depositName, userId]);
-      return inserted.insertId;
+      return {
+        result: inserted.insertId,
+      };
     } catch (error) {
-      return null;
+      throw error;
     }
   }
 
   async getAccountsByUserId(userId) {
     try {
-      const getAccountsByUserIdQuery = 'SELECT depositName FROM accounts WHERE userId = ?;';
-      const result = await this.execQuery(getAccountsByUserIdQuery, [userId]);
-      return result.map((res) => res.depositName);
+      const getAccountsByUserIdQuery = 'SELECT depositName FROM account WHERE userId = ?;';
+      const queryResult = await this.execQuery(getAccountsByUserIdQuery, [userId]);
+      return {
+        result: queryResult.map((res) => res.depositName),
+      };
     } catch (error) {
-      return null;
+      throw error;
     }
   }
 
   async findAccount(depositName) {
     try {
       const findAccountQuery = 'SELECT * FROM accounts WHERE depositName=?;';
-      const result = await this.execQuery(findAccountQuery, [depositName]);
-      return result.length !== 0;
+      const queryResult = await this.execQuery(findAccountQuery, [depositName]);
+      return queryResult.length !== 0;
     } catch (error) {
-      return null;
+      throw error;
     }
   }
 

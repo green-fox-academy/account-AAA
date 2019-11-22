@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const mysql = require('mysql');
 
 const connection = mysql.createPool({
@@ -9,8 +8,15 @@ const connection = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-connection.getConnection((err) => {
-  if (err) throw err;
+connection.getConnection((err, con) => {
+  if (err) {
+    /* eslint-disable no-alert, no-console */
+    console.error('Error: check database connection.');
+    /* eslint-enable no-alert */
+  }
+  if (con) {
+    con.release();
+  }
 });
 
 module.exports = connection;
