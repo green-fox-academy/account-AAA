@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   oneCard: {
     width: 350,
-    height: 250,
+    height: undefined,
     marginLeft: 13,
     marginTop: 10,
   },
@@ -12,6 +12,7 @@ export default StyleSheet.create({
     height: 130,
     backgroundColor: '#E0EEEE',
     flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
   idText: {
@@ -21,12 +22,24 @@ export default StyleSheet.create({
     fontSize: 20,
     color: 'grey',
   },
+  views: {
+    flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
   nameText: {
     marginLeft: 10,
-    fontSize: 35,
-    height: 40,
+    height: 50,
+    fontSize: 38,
+    flexWrap: 'wrap',
+    maxWidth: 250,
+    flexGrow: 1,
+    flexShrink: 1,
   },
   interestRate: {
+    marginTop: 10,
     marginLeft: 10,
     fontSize: 12,
     height: 25,

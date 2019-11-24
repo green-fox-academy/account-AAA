@@ -8,6 +8,8 @@ import {
   Right,
   Left,
   Button,
+  View,
+  Separator,
 } from 'native-base';
 import styles from '../styles/AccountCardStyle';
 
@@ -25,7 +27,9 @@ function AccountCard({ account }) {
         <Text style={styles.idText}>
           {`ID ${id}`}
         </Text>
-        <Text style={styles.nameText}>{`${depositName}`}</Text>
+        <View style={styles.views}>
+          <Text numberOfLines={1} style={styles.nameText}>{`${depositName}`}</Text>
+        </View>
         <Text style={styles.interestRate}>{`current interest rate: ${interestRate}`}</Text>
       </CardItem>
 
@@ -35,7 +39,7 @@ function AccountCard({ account }) {
 
       <CardItem style={styles.buttonCardItem}>
         <Left>
-          <Button footer transparent>
+          <Button footer onPress={() => { alert('details'); }} transparent>
             <Text>DETAILS</Text>
           </Button>
         </Left>
@@ -45,7 +49,7 @@ function AccountCard({ account }) {
             size={20}
             style={styles.dollarIcon}
           />
-          <Button footer button transparent>
+          <Button footer onPress={() => { alert('transfer'); }} button transparent>
             <Text>TRANSFER</Text>
           </Button>
         </Right>
