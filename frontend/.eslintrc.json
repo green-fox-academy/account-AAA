@@ -25,7 +25,8 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "import/no-unresolved": "off",
       "func-names": "off",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "no-alert": "off"
     },
     "root": true
 }
