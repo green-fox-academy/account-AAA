@@ -1,12 +1,15 @@
 const request = require('supertest');
 const app = require('../../server');
 
+const testToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyM30.tfk9jgMkUXcz_p7au1bt9WdddK6NpXOLy8b51kNxGKM';
+
 jest.mock('../models/DatabaseActions');
 
 describe('Post Endpoints', () => {
-  it('should return a new post', async () => {
+  it('should fail for duplicate name', async () => {
     const res = await request(app)
       .post('/deposit')
+      .set({ authorization: `Bearer ${testToken}` })
       .send({
         depositName: 'Main Account',
         userId: 123,
@@ -17,6 +20,7 @@ describe('Post Endpoints', () => {
   it('should return a new post', async () => {
     const res = await request(app)
       .post('/deposit')
+      .set({ authorization: `Bearer ${testToken}` })
       .send({
         depositName: 'new account',
         userId: 123,
@@ -28,16 +32,15 @@ describe('Post Endpoints', () => {
   it('should return a new post - lack request body', async () => {
     const res = await request(app)
       .post('/deposit')
-      .send({
-        depositName: 'name',
-      });
+      .set('authorization', `Bearer ${testToken}`)
+      .send({});
     expect(res.statusCode).toEqual(400);
   });
 
-  it('should return a new post - test headers', async () => {
+  it('should fail for incorrect haeder content-type', async () => {
     const res = await request(app)
       .post('/deposit')
-      .set('content-type', 'string')
+      .set({ 'content-type': 'string', authorization: `Bearer ${testToken}` })
       .send(JSON.stringify({
         depositName: 'name',
         userId: 2,
@@ -49,7 +52,8 @@ describe('Post Endpoints', () => {
 describe('Get all accounts Endpoint', () => {
   it('should return all accounts', async () => {
     const res = await request(app)
-      .get('/deposit/123');
+      .get('/deposit')
+      .set({ authorization: `Bearer ${testToken}` });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual([
       {

@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports = function OAuth(req, res, next) {
   const authorizationHeader = req.headers.authorization;
-
   if (!authorizationHeader) {
     res.status(415).send('Must include authorization info');
     return;
