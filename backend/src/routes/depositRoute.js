@@ -44,5 +44,4 @@ depositRoute.get('/', async (req, res) => {
   }
 });
 
-
 module.exports = depositRoute;
