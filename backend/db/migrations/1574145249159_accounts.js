@@ -7,6 +7,6 @@ module.exports = {
       + '("Salary", 380, 456), '
       + '("Pocket Money", 461, 456), '
       + '("Investment Account", 5000, 456), '
-      + '("Stock Account", 80000, 456)',
+      + '("Stock Account", 80000, 456);',
   down: 'TRUNCATE TABLE accounts;',
 };
