@@ -32,7 +32,15 @@ module.exports = class DatabaseActions {
       throw error;
     }
   }
-
+  async getAccountDetails(userId, depositId) {
+      try {
+      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE fromAccount = ? OR toAccount=?;';
+      const queryResult = await this.execQuery(findAccountDetailsQuery, [userId, depositId]);
+      return queryResult;
+    } catch (error) {
+      throw error;
+    }
+  }
   execQuery(sqlString, queryInput = null) {
     return new Promise((resolve, reject) => {
       this.connection.query(sqlString, queryInput, (error, result) => {
