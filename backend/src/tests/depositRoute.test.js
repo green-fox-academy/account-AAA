@@ -82,48 +82,48 @@ describe('Get accounts Endpoint we want', () => {
   it('should return all transaction', async () => {
     const res = await request(app)
       .get('/deposit/3/2');
-    // expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual([
       {
         transferId: 2,
         transferAmount: 150,
         fromUserId: 6,
-        fromAccount: 3,
+        fromDepositId: 3,
         toUserId: 2,
-        toAccount: 2,
+        toDepositId: 2,
         status: 'pending',
         timeOfTransfer: 12.9,
-    },
-    {
+      },
+      {
         transferId: 4,
         transferAmount: 90,
         fromUserId: 1,
-        fromAccount: 6,
+        fromDepositId: 6,
         toUserId: 3,
-        toAccount: 2,
+        toDepositId: 2,
         status: 'pending',
         timeOfTransfer: 8,
-    },
-    {
+      },
+      {
         transferId: 5,
         transferAmount: 150,
         fromUserId: 4,
-        fromAccount: 3,
+        fromDepositId: 3,
         toUserId: 2,
-        toAccount: 2,
+        toDepositId: 2,
         status: 'pending',
         timeOfTransfer: 12.9,
-    },
-    {
+      },
+      {
         transferId: 7,
         transferAmount: 100,
         fromUserId: 2,
-        fromAccount: 3,
+        fromDepositId: 3,
         toUserId: 3,
-        toAccount: 6,
+        toDepositId: 6,
         status: 'done',
         timeOfTransfer: 3.5,
-    },
+      },
     ]);
   });
 });
