@@ -1,12 +1,12 @@
 module.exports = {
-  up: 'INSERT INTO accounts(depositName, userId) '
+  up: 'INSERT INTO accounts(depositName, depositAmount, userId) '
       + 'VALUES '
-      + '("Main Account", 123), '
-      + '("Saving Account", 123), '
-      + '("Investment Account", 123), '
-      + '("Salary", 456), '
-      + '("Pocket Money", 456), '
-      + '("Investment Account", 456), '
-      + '("Stock Account", 456)',
+      + '("Main Account", 3000, 123), '
+      + '("Saving Account", 850, 123), '
+      + '("Investment Account", 10000, 123), '
+      + '("Salary", 380, 456), '
+      + '("Pocket Money", 461, 456), '
+      + '("Investment Account", 5000, 456), '
+      + '("Stock Account", 80000, 456)',
   down: 'TRUNCATE TABLE accounts;',
 };
