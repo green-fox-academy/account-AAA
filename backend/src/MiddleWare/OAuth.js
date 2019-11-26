@@ -15,8 +15,8 @@ module.exports = function OAuth(req, res, next) {
 
   const token = authorizationHeader.replace('Bearer ', '');
   try {
-    const userId = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
-    res.locals.userId = userId;
+    const { userId } = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
+    req.userId = userId;
     next();
   } catch (error) {
     res.status(401).send('Authorization failed');

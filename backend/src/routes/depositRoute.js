@@ -25,7 +25,7 @@ depositRoute.post('/', async (req, res) => {
     const { depositName } = req.body;
     const isNewAccountValid = !(await databaseActions.findAccount(depositName));
     if (isNewAccountValid) {
-      const inserted = await databaseActions.insertAccount(depositName, res.locals.userId.userId);
+      const inserted = await databaseActions.insertAccount(depositName, req.userId);
       res.status(200).json({ id: inserted });
     } else {
       res.status(422).send('Duplicate account name, please use another name');
@@ -37,7 +37,7 @@ depositRoute.post('/', async (req, res) => {
 
 depositRoute.get('/', async (req, res) => {
   try {
-    const accounts = await databaseActions.getAccountsByUserId(res.locals.userId.userId);
+    const accounts = await databaseActions.getAccountsByUserId(req.userId);
     res.status(200).json(accounts);
   } catch (error) {
     res.status(500).send('Something went wrong, please try again later.');
