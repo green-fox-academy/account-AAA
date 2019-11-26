@@ -15,7 +15,7 @@ module.exports = {
       user: 'ubuntu',
       host: '3.112.128.181',
       key: './.ssh/JSA-aaa-kp.pem',
-      ref: 'origin/JSAP-38',
+      ref: 'origin/master',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
       path: '/home/ubuntu/account-AAA',
       'post-deploy': 'cd backend && npm install && pm2 startOrRestart ecosystem.config.js --update-env && npm run dbRefresh',
