@@ -1,16 +1,57 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import {
   CardItem, Text, Right, Left, Button,
 } from 'native-base';
+import { withNavigation } from 'react-navigation';
+import accountPropTypes from '../helpers/accountPropTypes';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/AccountCardStyle';
 
-function AccountActions({ accountId }) {
+// test data, should get data from store in the future
+const testTransfers = [
+  {
+    transferId: 1,
+    transferAmount: 1500,
+    fromUserId: 123,
+    fromAccount: 1,
+    toUserId: 456,
+    toAccount: 3,
+    status: 'done',
+    timeOfTransfer: 100,
+  },
+  {
+    transferId: 2,
+    transferAmount: 500,
+    fromUserId: 123,
+    fromAccount: 3,
+    toUserId: 456,
+    toAccount: 2,
+    status: 'done',
+    timeOfTransfer: 100,
+  },
+  {
+    transferId: 3,
+    transferAmount: 300,
+    fromUserId: 123,
+    fromAccount: 3,
+    toUserId: 123,
+    toAccount: 1,
+    status: 'done',
+    timeOfTransfer: 100,
+  },
+];
+
+function AccountActions({ account, navigation }) {
+  const navToDetail = (event) => {
+    event.preventDefault();
+    navigation.navigate('AccountDetail', { account, testTransfers });
+  };
+
   return (
     <CardItem style={styles.buttonCardItem}>
       <Left>
-        <Button footer onPress={() => { alert(`details ${accountId}`); }} transparent>
+        <Button footer onPress={navToDetail} transparent>
           <Text>DETAILS</Text>
         </Button>
       </Left>
@@ -29,6 +70,8 @@ function AccountActions({ accountId }) {
 }
 
 AccountActions.propTypes = {
-  accountId: PropTypes.number.isRequired,
+  account: accountPropTypes.isRequired,
+  navigation: navigationPropTypes.isRequired,
 };
-export default AccountActions;
+
+export default withNavigation(AccountActions);

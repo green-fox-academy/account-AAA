@@ -13,7 +13,12 @@ function AccountsScreen({ accounts, fetchAccounts, user }) {
   return (
     <>
       <Content>
-        {accounts.map((account) => <AccountCard account={account} key={account.id} />)}
+        {accounts.map((account) => (
+          <AccountCard
+            account={account}
+            key={account.id}
+          />
+        ))}
       </Content>
     </>
   );

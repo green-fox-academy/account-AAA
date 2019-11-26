@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CardItem, Text, View } from 'native-base';
+import accountPropTypes from '../helpers/accountPropTypes';
 import styles from '../styles/AccountCardStyle';
 
-function AccountInfo({ account }) {
+export default function AccountInfo({ account }) {
   const {
     id, depositName, interestRate, depositAmount,
   } = account;
@@ -29,9 +29,5 @@ function AccountInfo({ account }) {
 }
 
 AccountInfo.propTypes = {
-  account: PropTypes.objectOf(PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ])).isRequired,
+  account: accountPropTypes.isRequired,
 };
-export default AccountInfo;
