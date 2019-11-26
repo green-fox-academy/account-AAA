@@ -8,7 +8,12 @@ export default function AccountsScreen({ navigation }) {
   return (
     <>
       <Content>
-        {accounts.map((account) => <AccountCard account={account} key={account.id} />)}
+        {accounts.map((account) => (
+          <AccountCard
+            account={account}
+            key={account.id}
+          />
+        ))}
       </Content>
     </>
   );
