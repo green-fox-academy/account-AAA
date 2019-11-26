@@ -18,7 +18,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
       path: '/home/ubuntu/account-AAA',
-      'post-deploy': 'cd backend && npm install && pm2 startOrRestart ecosystem.config.js --update-env && npm run dbRefresh',
+      'post-deploy': 'cd backend && npm install && npm run dbRefresh && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };
