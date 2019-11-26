@@ -60,6 +60,7 @@
  *       '500':
  *         description: DB problems
  */
+<<<<<<< HEAD
 
 /**
  * @swagger
@@ -83,3 +84,5 @@
  *       '500':
  *         description: DB problems
  */
+=======
+>>>>>>> perf(JSAP-11): gathered doc and edited accounts seed
