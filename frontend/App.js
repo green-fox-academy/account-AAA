@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import { Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import AppContainer from './src/navigations/navigation';
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
+
+  const rootReducer = combineReducers({
+    // put each reducer inside there
+  });
+
+  const store = createStore(rootReducer, applyMiddleware(thunk));
 
   async function fontSet() {
     /* eslint-disable global-require */
@@ -20,8 +29,10 @@ export default function App() {
   React.useEffect(() => { fontSet(); }, []);
 
   return !isReady ? <AppLoading /> : (
-    <Container>
-      <AppContainer />
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <AppContainer />
+      </Container>
+    </Provider>
   );
 }
