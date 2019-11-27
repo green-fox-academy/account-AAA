@@ -86,15 +86,15 @@ describe('Get accounts Endpoint we want', () => {
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual([
       {
-        "transferId": 2,
-        "transferAmount": 150,
-        "fromUserId": 123,
-        "fromDepositId": 3,
-        "toUserId": 456,
-        "toDepositId": 6,
-        "status": "pending",
-        "timeOfTransfer": "2019-11-27T06:59:59.000Z"
-    }
+        transferId: 2,
+        transferAmount: 150,
+        fromUserId: 123,
+        fromDepositId: 3,
+        toUserId: 456,
+        toDepositId: 6,
+        status: 'pending',
+        timeOfTransfer: '2019-11-27T06:59:59.000Z',
+      },
     ]);
   });
 });
