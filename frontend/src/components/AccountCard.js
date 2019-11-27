@@ -7,7 +7,7 @@ import AccountActions from './AccountActions';
 
 export default function AccountCard({ account }) {
   return (
-    <Card style={styles.oneCard}>
+    <Card style={styles.accountCard}>
       <AccountInfo account={account} />
       <AccountActions account={account} />
     </Card>
