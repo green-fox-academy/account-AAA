@@ -37,7 +37,7 @@ module.exports = class DatabaseActions {
     try {
       const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? OR toDepositId = ?)'
       + ' AND (toUserId = ? OR fromUserId = ? ) ;';
-      const queryResult = await this.execQuery(findAccountDetailsQuery, 
+      const queryResult = await this.execQuery(findAccountDetailsQuery,
         [depositId, depositId, userId, userId]);
       return queryResult;
     } catch (error) {
