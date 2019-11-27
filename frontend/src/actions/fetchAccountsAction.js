@@ -1,12 +1,9 @@
-import { AsyncStorage } from 'react-native';
+// import { AsyncStorage } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 export default function fetchAccountsAction() {
   return async function (dispatch) {
-    const authToken = await AsyncStorage.getItem('authToken', (error) => {
-      if (error) {
-        console.log(error.message);
-      }
-    });
+    const authToken = await SecureStore.getItemAsync('authToken');
 
     const result = await fetch('http://10.22.18.36:3001/deposit', {
       method: 'GET',
