@@ -1,7 +1,7 @@
 import React from 'react';
-import { CardItem, Text, View } from 'native-base';
+import { CardItem, Text } from 'native-base';
 import accountPropTypes from '../helpers/accountPropTypes';
-import styles from '../styles/AccountCardStyle';
+import styles from '../styles/AccountInfoStyle';
 
 export default function AccountInfo({ account }) {
   const {
@@ -9,20 +9,14 @@ export default function AccountInfo({ account }) {
   } = account;
   return (
     <>
-      <CardItem style={styles.cardItem}>
-        <Text style={styles.idText}>
-          {' '}
-          {`ID ${id}`}
-          {' '}
-        </Text>
-        <View style={styles.views}>
-          <Text numberOfLines={1} style={styles.nameText}>{`${depositName}`}</Text>
-        </View>
+      <CardItem style={styles.accountInfo}>
+        <Text style={styles.depositId}>{`ID ${id}`}</Text>
+        <Text numberOfLines={1} style={styles.depositName}>{`${depositName}`}</Text>
         <Text style={styles.interestRate}>{`current interest rate: ${interestRate}`}</Text>
       </CardItem>
 
-      <CardItem style={styles.middleCardItem}>
-        <Text style={styles.depositAmount}>{`$${depositAmount}`}</Text>
+      <CardItem style={styles.balance}>
+        <Text style={styles.depositAmount}>{`$ ${depositAmount}`}</Text>
       </CardItem>
     </>
   );
