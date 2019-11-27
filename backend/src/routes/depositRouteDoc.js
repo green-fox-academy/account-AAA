@@ -61,14 +61,14 @@
  *         description: DB problems
  */
 
- /**
+/**
  * @swagger
  * /depositId:
  *   get:
  *     tags:
  *       - depositId
  *     name: Retrive deposit accounts
- *     summary: Retrive all the transaction after we input depositId 
+ *     summary: Retrive all the transaction after we input depositId
  *     security:
  *       - bearerAuth: []
  *     produces:
