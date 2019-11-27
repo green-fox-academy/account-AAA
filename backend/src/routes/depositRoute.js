@@ -12,18 +12,20 @@ depositRoute.post('/', async (req, res) => {
     return;
   }
 
-  const requiredKeys = ['depositName', 'userId'];
+  // validate body content
+  const requiredKeys = ['depositName'];
   const missingKeys = depositRequestValidator.findMissingKeys(requiredKeys, Object.keys(req.body));
   if (missingKeys.length > 0) {
     res.status(400).send(`Missing ${missingKeys}.`);
     return;
   }
 
-  const { depositName, userId } = req.body;
+  // post account
   try {
+    const { depositName } = req.body;
     const isNewAccountValid = !(await databaseActions.findAccount(depositName));
     if (isNewAccountValid) {
-      const inserted = await databaseActions.insertAccount(depositName, userId);
+      const inserted = await databaseActions.insertAccount(depositName, req.userId);
       res.status(200).json({ id: inserted });
     } else {
       res.status(422).send('Duplicate account name, please use another name');
@@ -33,9 +35,9 @@ depositRoute.post('/', async (req, res) => {
   }
 });
 
-depositRoute.get('/:userId', async (req, res) => {
+depositRoute.get('/', async (req, res) => {
   try {
-    const accounts = await databaseActions.getAccountsByUserId(req.params.userId);
+    const accounts = await databaseActions.getAccountsByUserId(req.userId);
     res.status(200).json(accounts);
   } catch (error) {
     res.status(500).send('Something went wrong, please try again later.');

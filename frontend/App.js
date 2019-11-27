@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+
 import AppContainer from './src/navigations/navigation';
+import store from './src/store/configureStore';
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -20,8 +23,10 @@ export default function App() {
   React.useEffect(() => { fontSet(); }, []);
 
   return !isReady ? <AppLoading /> : (
-    <Container>
-      <AppContainer />
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <AppContainer />
+      </Container>
+    </Provider>
   );
 }

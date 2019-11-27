@@ -9,7 +9,6 @@ import {
   Left,
   Button,
   View,
-  Separator,
 } from 'native-base';
 import styles from '../styles/AccountCardStyle';
 

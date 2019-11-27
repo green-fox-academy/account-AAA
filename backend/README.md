@@ -20,6 +20,20 @@ This Step should only be needed for once
     MYSQL_DATABASE=JSABANK
   ```
 
+note for env:
+Created Relational Database Service for the AWS backend and PM2 deployment runs migrations
+Add {
+  MYSQL_HOST
+  MYSQL_USER_NAME
+  MYSQL_PASSWORD
+  MYSQL_DATABASE
+} into EC2 environment variables 
+The connection will connect to the database from RDS.
+
+Use following command to check the variables
+```bash
+  $ echo $VariableName
+```
 ## 3. Run migration scripts for table creation
 This step to guraantee the same table structure and test accounts data is used.
   ```bash
