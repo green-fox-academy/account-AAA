@@ -77,3 +77,24 @@ describe('Get all accounts Endpoint', () => {
     ]);
   });
 });
+
+describe('Get accounts Endpoint we want', () => {
+  it('should return all transaction', async () => {
+    const res = await request(app)
+      .get('/deposit/3')
+      .set({ authorization: `Bearer ${testToken}` });
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toEqual([
+      {
+        transferId: 2,
+        transferAmount: 150,
+        fromUserId: 123,
+        fromDepositId: 3,
+        toUserId: 456,
+        toDepositId: 6,
+        status: 'pending',
+        timeOfTransfer: '2019-11-27T06:59:59.000Z',
+      },
+    ]);
+  });
+});
