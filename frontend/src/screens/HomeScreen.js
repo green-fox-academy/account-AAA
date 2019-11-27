@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Text } from 'native-base';
 import navigationPropTypes from '../helpers/navigationPropTypes';
-
+// import { fetchAccountsAction } from '../actions/fetchAccountsAction';
 // mockup accounts for testing purposes
 const accounts = [
   {
@@ -25,8 +25,8 @@ const accounts = [
     depositAmount: 0,
     interestRate: '4%',
   },
-
 ];
+
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -43,3 +43,17 @@ export default function HomeScreen({ navigation }) {
 HomeScreen.propTypes = {
   navigation: navigationPropTypes.isRequired,
 };
+
+// const mapStateToProps = state => {
+//   return {
+//     accounts: state.fetchAccountsReducer.accounts
+//   }
+// }
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchAccountsAction: () => { dispatch(fetchAccountsAction()) }
+//   }
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
