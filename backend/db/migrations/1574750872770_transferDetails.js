@@ -11,6 +11,6 @@ module.exports = {
     + '( 99, 123, 1, 456, 5, "pending"), '
     + '( 50, 123, 1, 789, 8, "pending"), '
     + '( 99, 456, 4, 123, 1, "pending"), '
-    + '( 50, 789, 9, 123, 2, "pending"), ',
+    + '( 50, 789, 9, 123, 2, "pending"); ',
   down: 'TRUNCATE TABLE transferDetails;',
 };
