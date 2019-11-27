@@ -81,7 +81,7 @@ describe('Get all accounts Endpoint', () => {
 describe('Get accounts Endpoint we want', () => {
   it('should return all transaction', async () => {
     const res = await request(app)
-      .get('/deposit/2')
+      .get('/deposit/3')
       .set({ authorization: `Bearer ${testToken}` });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual([
