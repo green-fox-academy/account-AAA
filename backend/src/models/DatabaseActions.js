@@ -36,7 +36,7 @@ module.exports = class DatabaseActions {
   async getAccountDetails(depositId) {
     try {
       const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE fromDepositId = ? OR toDepositId = ?;';
-      const queryResult = await this.execQuery(findAccountDetailsQuery, [depositId]);
+      const queryResult = await this.execQuery(findAccountDetailsQuery, [depositId, depositId]);
       return queryResult;
     } catch (error) {
       throw error;

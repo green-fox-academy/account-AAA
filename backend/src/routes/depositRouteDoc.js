@@ -60,3 +60,26 @@
  *       '500':
  *         description: DB problems
  */
+
+ /**
+ * @swagger
+ * /depositId:
+ *   get:
+ *     tags:
+ *       - depositId
+ *     name: Retrive deposit accounts
+ *     summary: Retrive all the transaction after we input depositId 
+ *     security:
+ *       - bearerAuth: []
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       '200':
+ *         description: User found and deposit transaction sent back successfully
+ *       '415':
+ *         description: No auth token provided or provides token is not of Bearer type
+ *       '401':
+ *         description: Provided token is invalid
+ *       '500':
+ *         description: DB problems
+ */

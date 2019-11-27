@@ -81,49 +81,40 @@ describe('Get all accounts Endpoint', () => {
 describe('Get accounts Endpoint we want', () => {
   it('should return all transaction', async () => {
     const res = await request(app)
-      .get('/deposit/2');
+      .get('/deposit/2')
+      .set({ authorization: `Bearer ${testToken}` });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toEqual([
       {
-        transferId: 2,
-        transferAmount: 150,
-        fromUserId: 6,
-        fromDepositId: 3,
-        toUserId: 2,
-        toDepositId: 2,
-        status: 'pending',
-        timeOfTransfer: 12.9,
-      },
-      {
-        transferId: 4,
-        transferAmount: 90,
-        fromUserId: 1,
-        fromDepositId: 6,
-        toUserId: 3,
-        toDepositId: 2,
-        status: 'pending',
-        timeOfTransfer: 8,
-      },
-      {
-        transferId: 5,
-        transferAmount: 150,
-        fromUserId: 4,
-        fromDepositId: 3,
-        toUserId: 2,
-        toDepositId: 2,
-        status: 'pending',
-        timeOfTransfer: 12.9,
-      },
-      {
-        transferId: 7,
-        transferAmount: 100,
-        fromUserId: 2,
-        fromDepositId: 3,
-        toUserId: 3,
-        toDepositId: 6,
-        status: 'done',
-        timeOfTransfer: 3.5,
-      },
+        "transferId": 2,
+        "transferAmount": 150,
+        "fromUserId": 6,
+        "fromDepositId": 3,
+        "toUserId": 2,
+        "toDepositId": 2,
+        "status": "pending",
+        "timeOfTransfer": 12.9
+    },
+    {
+        "transferId": 5,
+        "transferAmount": 150,
+        "fromUserId": 4,
+        "fromDepositId": 3,
+        "toUserId": 2,
+        "toDepositId": 2,
+        "status": "pending",
+        "timeOfTransfer": 12.9
+    },
+    {
+        "transferId": 7,
+        "transferAmount": 100,
+        "fromUserId": 2,
+        "fromDepositId": 3,
+        "toUserId": 3,
+        "toDepositId": 6,
+        "status": "done",
+        "timeOfTransfer": 3.5
+    },
     ]);
   });
 });
