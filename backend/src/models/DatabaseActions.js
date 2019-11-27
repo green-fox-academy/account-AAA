@@ -33,10 +33,12 @@ module.exports = class DatabaseActions {
     }
   }
 
-  async getAccountDetails(depositId) {
+  async getAccountDetails(depositId, userId) {
     try {
-      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE fromDepositId = ? OR toDepositId = ?;';
-      const queryResult = await this.execQuery(findAccountDetailsQuery, [depositId, depositId]);
+      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? OR toDepositId = ?)'
+      + ' AND (toUserId = ? OR fromUserId = ? ) ;';
+      const queryResult = await this.execQuery(findAccountDetailsQuery, 
+        [depositId, depositId, userId, userId]);
       return queryResult;
     } catch (error) {
       throw error;

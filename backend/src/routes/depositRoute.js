@@ -46,8 +46,8 @@ depositRoute.get('/', async (req, res) => {
 
 depositRoute.get('/:depositId', async (req, res) => {
   try {
-    const accountsDetails = await databaseActions.getAccountDetails(req.params.depositId);
-    console.log(accountsDetails);
+    const { depositId } = req.params;
+    const accountsDetails = await databaseActions.getAccountDetails(depositId, req.userId);
     res.status(200).json(accountsDetails);
   } catch (error) {
     res.status(500).send('Something went wrong, please try again later.');

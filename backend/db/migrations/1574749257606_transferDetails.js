@@ -7,6 +7,6 @@ module.exports = {
     + 'toUserId INT,'
     + 'toDepositId INT,'
     + 'status VARCHAR(255),'
-    + 'timeOfTransfer FLOAT DEFAULT 0);',
+    + 'timeOfTransfer timestamp);',
   down: 'DROP TABLE transferDetails;',
 };
