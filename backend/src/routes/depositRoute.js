@@ -44,7 +44,6 @@ depositRoute.get('/', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 depositRoute.get('/:depositId', async (req, res) => {
   try {
     const { depositId } = req.params;
@@ -55,6 +54,4 @@ depositRoute.get('/:depositId', async (req, res) => {
   }
 });
 
-=======
->>>>>>> code(JSAP-11): added Swagger api doc for express endpoints
 module.exports = depositRoute;

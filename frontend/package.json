@@ -14,11 +14,7 @@
     "@expo/vector-icons": "^10.0.6",
     "expo": "^35.0.0",
     "expo-font": "~7.0.0",
-<<<<<<< HEAD
     "expo-secure-store": "^7.0.0",
-=======
-    "fbjs": "^1.0.0",
->>>>>>> code(JSAP-2): basic account detail screen done
     "native-base": "^2.13.8",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
