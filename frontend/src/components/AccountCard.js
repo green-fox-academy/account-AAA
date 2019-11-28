@@ -12,7 +12,6 @@ import {
 } from 'native-base';
 import styles from '../styles/AccountCardStyle';
 
-
 function AccountCard({ account }) {
   const {
     id,
