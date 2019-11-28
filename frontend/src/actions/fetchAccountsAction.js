@@ -1,6 +1,8 @@
+import config from '../config';
+
 export default function fetchAccountsAction(authToken) {
   return async function (dispatch) {
-    const result = await fetch('http://10.22.18.36:3001/deposit', {
+    const result = await fetch(`http://${config.IP}:${config.PORT}/deposit`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${authToken}`,
