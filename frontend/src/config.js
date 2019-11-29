@@ -1,9 +1,9 @@
-import { TOKEN, SERVER_ADDRESS, PORT } from 'react-native-dotenv';
+import { TOKEN, SERVER_ADDRESS, SERVER_PORT } from 'react-native-dotenv';
 
 const config = {
   token: TOKEN,
   serverAddress: SERVER_ADDRESS,
-  port: PORT,
+  port: SERVER_PORT,
 };
 
 export default config;
