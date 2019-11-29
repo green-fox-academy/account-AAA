@@ -7,7 +7,7 @@ import fetchAccountsAction from '../actions/fetchAccountsAction';
 
 function AccountsScreen({ accounts, fetchAccounts, user }) {
   React.useEffect(
-    () => { fetchAccounts(user.token); }, [],
+    () => { fetchAccounts(user.token); }, [accounts],
   );
 
   return (
