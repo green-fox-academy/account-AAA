@@ -8,84 +8,10 @@ import accountPropTypes from '../helpers/accountPropTypes';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/AccountActionsStyle';
 
-// test data, should get data from store in the future
-const testTransfers = [
-  {
-    transferId: 1,
-    transferAmount: 1500,
-    fromUserId: 123,
-    fromDepositId: 1,
-    toUserId: 123,
-    toDepositId: 3,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 2,
-    transferAmount: 500,
-    fromUserId: 123,
-    fromDepositId: 1,
-    toUserId: 456,
-    toDepositId: 5,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 3,
-    transferAmount: 300,
-    fromUserId: 456,
-    fromDepositId: 6,
-    toUserId: 123,
-    toDepositId: 1,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 2,
-    transferAmount: 500,
-    fromUserId: 123,
-    fromDepositId: 1,
-    toUserId: 456,
-    toDepositId: 5,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 3,
-    transferAmount: 300,
-    fromUserId: 456,
-    fromDepositId: 6,
-    toUserId: 123,
-    toDepositId: 1,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 2,
-    transferAmount: 500,
-    fromUserId: 123,
-    fromDepositId: 1,
-    toUserId: 456,
-    toDepositId: 5,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-  {
-    transferId: 3,
-    transferAmount: 300,
-    fromUserId: 456,
-    fromDepositId: 6,
-    toUserId: 123,
-    toDepositId: 1,
-    status: 'done',
-    timeOfTransfer: '100',
-  },
-];
-
 function AccountActions({ account, navigation }) {
   const navToDetail = (event) => {
     event.preventDefault();
-    navigation.navigate('AccountDetail', { account, testTransfers });
+    navigation.navigate('AccountDetail', { account });
   };
 
   return (
