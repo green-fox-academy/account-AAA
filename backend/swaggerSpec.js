@@ -1,3 +1,4 @@
+require('dotenv').config();
 const swaggerJSDoc = require('swagger-jsdoc');
 
 const swaggerDefinition = {
@@ -6,7 +7,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'Endpoints to add and retrive deposit accounts through the deposit routes',
   },
-  host: 'localhost:3001',
+  host: `localhost:${process.env.PORT}`,
   basePath: '/',
   securityDefinitions: {
     bearerAuth: {
