@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   depositName: {
     marginLeft: 10,
-    fontSize: 38,
+    fontSize: 25,
     flexWrap: 'wrap',
     maxWidth: 250,
   },

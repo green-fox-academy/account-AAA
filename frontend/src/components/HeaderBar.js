@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
   Header, Left, Body, Right, Button, Icon, Title, Input,
 } from 'native-base';
@@ -11,33 +12,7 @@ const initSearchState = {
   content: '',
 };
 
-// test accounts data, repalce it with stored value when store is ready
-const accounts = [
-  {
-    id: 1,
-    depositName: 'Main account',
-    userID: 1,
-    depositAmount: 3400,
-    interestRate: '0.25%',
-  },
-  {
-    id: 2,
-    depositName: 'Savings account',
-    userID: 1,
-    depositAmount: 0,
-    interestRate: '2.5%',
-  },
-  {
-    id: 3,
-    depositName: 'Investment account',
-    userID: 1,
-    depositAmount: 0,
-    interestRate: '4%',
-  },
-
-];
-
-export default function HeaderBar({ pageTitle, navigation }) {
+function HeaderBar({ updateDisplay, pageTitle, navigation }) {
   const [searchState, setSearchState] = useState(initSearchState);
   const toggleSearchInput = () => {
     setSearchState({
@@ -46,14 +21,12 @@ export default function HeaderBar({ pageTitle, navigation }) {
     });
   };
 
-  const updateSearchContent = (event) => {
+  const updateSearchContent = ({ nativeEvent }) => {
+    updateDisplay(nativeEvent.text);
     setSearchState({
       ...searchState,
-      content: event.target.value,
+      content: nativeEvent.text,
     });
-    if (searchState.content !== '') {
-      accounts.filter((account) => account.depositName.includes(searchState.content));
-    }
   };
 
   const navToCreatePage = () => {
@@ -121,7 +94,17 @@ export default function HeaderBar({ pageTitle, navigation }) {
   );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  updateDisplay: (displayName) => dispatch({
+    type: 'UPDATE_DISPLAY',
+    displayName,
+  }),
+});
+
 HeaderBar.propTypes = {
+  updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   navigation: navigationPropTypes.isRequired,
 };
+
+export default connect(null, mapDispatchToProps)(HeaderBar);

@@ -18,16 +18,16 @@ function AccountActions({ account, navigation }) {
     <CardItem style={styles.accountActions}>
       <Left>
         <Button footer onPress={navToDetail} transparent>
-          <Text>DETAILS</Text>
+          <Text style={styles.buttonText}>DETAILS</Text>
         </Button>
       </Left>
       <Right>
         <Button footer onPress={() => { alert('transfer'); }} button transparent>
           <FontAwesome
             name="dollar"
-            size={20}
+            size={25}
           />
-          <Text>TRANSFER</Text>
+          <Text style={styles.buttonText}>TRANSFER</Text>
         </Button>
       </Right>
     </CardItem>

@@ -7,4 +7,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
+  buttonText: {
+    fontSize: 20,
+  },
 });

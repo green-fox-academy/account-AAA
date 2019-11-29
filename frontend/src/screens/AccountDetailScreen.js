@@ -27,8 +27,8 @@ function AccountDetailScreen({
   );
 }
 
-const mapStateToProps = ({ accountTransfersReducer, userReducer }) => ({
-  transfers: accountTransfersReducer,
+const mapStateToProps = ({ transfersReducer, userReducer }) => ({
+  transfers: transfersReducer,
   authToken: userReducer.user.token,
 });
 

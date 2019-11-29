@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
-import fetchAccountsReducer from './fetchAccountsReducer';
-import accountTransfersReducer from './accountTransfersReducer';
+import accountsReducer from './accountsReducer';
+import transfersReducer from './transfersReducer';
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-  // put each reducer inside there
   userReducer,
-  fetchAccountsReducer,
-  accountTransfersReducer,
+  accountsReducer,
+  transfersReducer,
 });
 
 export default rootReducer;
