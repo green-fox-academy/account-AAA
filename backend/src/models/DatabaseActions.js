@@ -33,6 +33,26 @@ module.exports = class DatabaseActions {
     }
   }
 
+  async getUserNameById(userId) {
+    try {
+      const findFullNameQuery = 'SELECT CONCAT(firstName,  " ", lastName) AS fullName from users WHERE userId=?';
+      const queryResult = await this.execQuery(findFullNameQuery, [userId]);
+      return queryResult[0].fullName;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAccountNameById(depositId) {
+    try {
+      const findAccountNameQuery = 'SELECT depositName from accounts WHERE id=?';
+      const queryResult = await this.execQuery(findAccountNameQuery, [depositId]);
+      return queryResult[0].depositName;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getAccountDetails(depositId, userId) {
     try {
       const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? )'
@@ -41,6 +61,39 @@ module.exports = class DatabaseActions {
         [depositId, userId, depositId, userId]);
       return queryResult;
     } catch (error) {
+      throw error;
+    }
+  }
+
+  async getTransfers(depositId, userId) {
+    try {
+      const transfers = await this.getAccountDetails(depositId, userId);
+      const results = [];
+      for (let i = 0; i < transfers.length; i++) {
+        const transfer = {...transfers[i]};
+        let nameToUse;
+        console.log(transfer);
+        const direction = (depositId === transfer.toDepositId)
+          ? 'from'
+          : 'to';
+        if (transfer.selfTransfer === 1) {
+          if (depositId === transfer.toDepositId) {
+            nameToUse = await this.getAccountNameById(transfer.fromDepositId);
+          } else {
+            nameToUse = await this.getAccountNameById(transfer.toDepositId);
+          }
+        } else if (depositId === transfer.toDepositId) {
+          nameToUse = await this.getUserNameById(transfer.fromUserId);
+        } else {
+          nameToUse = await this.getUserNameById(transfer.toUserId);
+        }
+        transfer.direction = direction;
+        transfer.nameToUse = nameToUse;
+        results.push(transfer);
+      }
+      return results;
+    } catch (error) {
+      console.log(error);
       throw error;
     }
   }

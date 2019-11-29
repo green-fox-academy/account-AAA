@@ -76,7 +76,7 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
         </Button>
       </Left>
       <Body style={styles.headerBody}>
-        {searchState.status
+        {searchState.status && pageTitle === 'Accounts'
           ? (
             <Input
               placeholder="Search"
