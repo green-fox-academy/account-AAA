@@ -40,7 +40,7 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
   };
 
   const renderRightHeader = () => {
-    if (pageTitle === 'New Account') {
+    if (pageTitle === 'New Account' || pageTitle === 'Receive transfer') {
       return null;
     }
     return (

@@ -5,9 +5,12 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
+
   buttonText: {
-    fontSize: 20,
+    paddingLeft: 5,
+    fontSize: 15,
   },
 });
