@@ -21,7 +21,6 @@ export default function postNewAccountAction(accountName, authToken) {
         throw response;
       }
     } catch (response) {
-      console.log(response);
       dispatch({
         type: 'POST_NEW_ACCOUNT_ERROR',
         err: response.message,
