@@ -33,6 +33,26 @@ module.exports = class DatabaseActions {
     }
   }
 
+  async getUserNameById(userId) {
+    try {
+      const findFullNameQuery = 'SELECT CONCAT(firstName,  " ", lastName) AS fullName from users WHERE userId=?';
+      const queryResult = await this.execQuery(findFullNameQuery, [userId]);
+      return queryResult[0].fullName;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getAccountNameById(depositId) {
+    try {
+      const findAccountNameQuery = 'SELECT depositName from accounts WHERE id=?';
+      const queryResult = await this.execQuery(findAccountNameQuery, [depositId]);
+      return queryResult[0].depositName;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getAccountDetails(depositId, userId) {
     try {
       const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? )'
@@ -40,6 +60,27 @@ module.exports = class DatabaseActions {
       const queryResult = await this.execQuery(findAccountDetailsQuery,
         [depositId, userId, depositId, userId]);
       return queryResult;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getTransfers(depositId, userId) {
+    try {
+      const transfers = await this.getAccountDetails(depositId, userId);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const transfer of transfers) {
+        transfer.direction = (parseInt(depositId) === transfer.toDepositId
+          ? 'from'
+          : 'to');
+        const idToUse = transfer[`${transfer.direction}${transfer.selfTransfer ? 'DepositId' : 'UserId'}`];
+        if (transfer.selfTransfer) {
+          transfer.nameToUse = await this.getAccountNameById(idToUse);
+        } else {
+          transfer.nameToUse = await this.getUserNameById(idToUse);
+        }
+      }
+      return transfers;
     } catch (error) {
       throw error;
     }

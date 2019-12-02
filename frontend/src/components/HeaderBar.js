@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
-  Header, Left, Body, Right, Button, Icon, Title,
+  Header, Left, Body, Right, Button, Icon, Title, Input,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
+import styles from '../styles/HeaderBarStyle';
 
-export default function HeaderBar({ pageTitle, navigation }) {
+const initSearchState = {
+  status: false,
+  content: '',
+};
+
+function HeaderBar({ updateDisplay, pageTitle, navigation }) {
+  const [searchState, setSearchState] = useState(initSearchState);
+  const toggleSearchInput = () => {
+    setSearchState({
+      ...searchState,
+      status: !searchState.status,
+    });
+  };
+
+  const updateSearchContent = (inputText) => {
+    updateDisplay(inputText);
+    setSearchState({
+      ...searchState,
+      content: inputText,
+    });
+  };
+
+  const navToCreatePage = () => {
+    setSearchState(initSearchState);
+    navigation.navigate('NewAccount');
+  };
+
   const handleGoBack = (event) => {
     event.preventDefault();
     navigation.goBack();
@@ -16,36 +44,67 @@ export default function HeaderBar({ pageTitle, navigation }) {
       return null;
     }
     return (
-      <Button
-        transparent
-        onPress={() => navigation.navigate('NewAccount')}
-      >
-        <Icon name="add" />
-      </Button>
+      <>
+        {pageTitle === 'Accounts'
+          ? (
+            <Button
+              transparent
+              onPress={toggleSearchInput}
+            >
+              <Icon name="search" style={styles.searchIcon} />
+            </Button>
+          )
+          : <></>}
+        <Button
+          transparent
+          onPress={navToCreatePage}
+        >
+          <Icon name="add" style={styles.createIcon} />
+        </Button>
+      </>
     );
   };
 
   return (
-    <Header>
-      <Left>
+    <Header style={styles.headerBar}>
+      <Left style={styles.headerLeft}>
         <Button
           transparent
           onPress={handleGoBack}
         >
-          <Icon name="arrow-back" />
+          <Icon name="arrow-back" style={styles.backIcon} />
         </Button>
       </Left>
-      <Body>
-        <Title>{ pageTitle }</Title>
+      <Body style={styles.headerBody}>
+        {searchState.status && pageTitle === 'Accounts'
+          ? (
+            <Input
+              placeholder="Search"
+              style={styles.searchField}
+              value={searchState.content}
+              onChangeText={updateSearchContent}
+            />
+          )
+          : <Title>{ pageTitle }</Title>}
       </Body>
-      <Right>
+      <Right style={styles.headerRight}>
         {renderRightHeader()}
       </Right>
     </Header>
   );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  updateDisplay: (displayName) => dispatch({
+    type: 'UPDATE_DISPLAY',
+    displayName,
+  }),
+});
+
 HeaderBar.propTypes = {
+  updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   navigation: navigationPropTypes.isRequired,
 };
+
+export default connect(null, mapDispatchToProps)(HeaderBar);
