@@ -68,32 +68,20 @@ module.exports = class DatabaseActions {
   async getTransfers(depositId, userId) {
     try {
       const transfers = await this.getAccountDetails(depositId, userId);
-      const results = [];
-      for (let i = 0; i < transfers.length; i++) {
-        const transfer = {...transfers[i]};
-        let nameToUse;
-        console.log(transfer);
-        const direction = (depositId === transfer.toDepositId)
+      // eslint-disable-next-line no-restricted-syntax
+      for (const transfer of transfers) {
+        transfer.direction = (parseInt(depositId) === transfer.toDepositId
           ? 'from'
-          : 'to';
-        if (transfer.selfTransfer === 1) {
-          if (depositId === transfer.toDepositId) {
-            nameToUse = await this.getAccountNameById(transfer.fromDepositId);
-          } else {
-            nameToUse = await this.getAccountNameById(transfer.toDepositId);
-          }
-        } else if (depositId === transfer.toDepositId) {
-          nameToUse = await this.getUserNameById(transfer.fromUserId);
+          : 'to');
+        const idToUse = transfer[`${transfer.direction}${transfer.selfTransfer ? 'DepositId' : 'UserId'}`];
+        if (transfer.selfTransfer) {
+          transfer.nameToUse = await this.getAccountNameById(idToUse);
         } else {
-          nameToUse = await this.getUserNameById(transfer.toUserId);
+          transfer.nameToUse = await this.getUserNameById(idToUse);
         }
-        transfer.direction = direction;
-        transfer.nameToUse = nameToUse;
-        results.push(transfer);
       }
-      return results;
+      return transfers;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

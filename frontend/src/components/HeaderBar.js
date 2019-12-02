@@ -21,11 +21,11 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
     });
   };
 
-  const updateSearchContent = ({ nativeEvent }) => {
-    updateDisplay(nativeEvent.text);
+  const updateSearchContent = (inputText) => {
+    updateDisplay(inputText);
     setSearchState({
       ...searchState,
-      content: nativeEvent.text,
+      content: inputText,
     });
   };
 
@@ -82,7 +82,7 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
               placeholder="Search"
               style={styles.searchField}
               value={searchState.content}
-              onChange={updateSearchContent}
+              onChangeText={updateSearchContent}
             />
           )
           : <Title>{ pageTitle }</Title>}

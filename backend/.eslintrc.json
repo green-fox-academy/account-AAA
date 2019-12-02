@@ -17,7 +17,9 @@
     },
     "rules": {
       "class-methods-use-this": "off",
-      "no-useless-catch": "off"
+      "no-useless-catch": "off",
+      "no-await-in-loop": "off",
+      "radix": "off"
     },
     "root": true
 }

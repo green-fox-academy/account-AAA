@@ -9,24 +9,22 @@ import { connect } from 'react-redux';
 import styles from '../styles/CreateNewDepositStyle';
 import buttonStyle from '../styles/BottomButtonStyle';
 import postNewAccountAction from '../actions/postNewAccountAction';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
 
-function CreateNewDeposit({ navigation, user, postNewAccount }) {
+function CreateNewDeposit({ navigation, token, postNewAccount }) {
   const [accountName, onChangeText] = React.useState('');
-
 
   const handleChange = ({ nativeEvent }) => {
     onChangeText(nativeEvent.text);
   };
 
   const handlePress = () => {
-    postNewAccount(accountName, user.token);
+    postNewAccount(accountName, token);
     navigation.navigate('Accounts');
   };
 
-
   return (
-
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
       <View style={{ flex: 0.5 }}>
         <Text style={styles.text}>Name of deposit account</Text>
@@ -56,16 +54,15 @@ function CreateNewDeposit({ navigation, user, postNewAccount }) {
   );
 }
 CreateNewDeposit.propTypes = {
-  navigation: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  navigation: navigationPropTypes.isRequired,
+  token: PropTypes.string.isRequired,
   postNewAccount: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
-  user: state.userReducer.user,
+  token: state.userReducer.user.token,
 });
 const mapDispatchToProps = (dispatch) => ({
   postNewAccount: (accountName, token) => { dispatch(postNewAccountAction(accountName, token)); },
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CreateNewDeposit));

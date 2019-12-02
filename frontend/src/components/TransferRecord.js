@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   CardItem, Text, Icon, Right,
 } from 'native-base';
-import PropTypes from 'prop-types';
 import styles from '../styles/TransferDetailStyle';
+import transferProptypes from '../helpers/transferProptypes';
 
 const transferIcon = {
   to: {
@@ -20,29 +20,16 @@ export default function TransferRecord({ transfer }) {
   const transferText = `$ ${transfer.transferAmount} ${transfer.direction} ${transfer.nameToUse}`;
   const { iconName, iconColor } = transferIcon[transfer.direction];
   return (
-    <>
-      <CardItem style={styles.transfer}>
-        <Icon name={iconName} style={{ color: iconColor }} />
-        <Right style={styles.transferDetail}>
-          <Text style={styles.transferText}>{transferText}</Text>
-          <Text style={styles.transferTime}>{`time: ${transfer.timeOfTransfer}`}</Text>
-        </Right>
-      </CardItem>
-    </>
+    <CardItem style={styles.transfer}>
+      <Icon name={iconName} style={{ color: iconColor }} />
+      <Right style={styles.transferDetail}>
+        <Text style={styles.transferText}>{transferText}</Text>
+        <Text style={styles.transferTime}>{`time: ${transfer.timeOfTransfer}`}</Text>
+      </Right>
+    </CardItem>
   );
 }
 
 TransferRecord.propTypes = {
-  transfer: PropTypes.shape({
-    transferId: PropTypes.number,
-    transferAmount: PropTypes.number,
-    fromUserId: PropTypes.number,
-    fromDepositId: PropTypes.number,
-    toUserId: PropTypes.number,
-    toDepositId: PropTypes.number,
-    status: PropTypes.string,
-    timeOfTransfer: PropTypes.string,
-    direction: PropTypes.string,
-    nameToUse: PropTypes.string,
-  }).isRequired,
+  transfer: transferProptypes.isRequired,
 };

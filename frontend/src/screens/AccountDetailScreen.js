@@ -14,18 +14,12 @@ function AccountDetailScreen({
   useEffect(() => {
     fetchTransfers(account.id, authToken);
   }, []);
-  console.log('1', transfers);
   return (
-    transfers.length > 0
-      ? (
-
-        <>
-          <AccountInfo account={account} />
-          <TransferHistory transfers={transfers} account={account} />
-          <TransferButton />
-        </>
-      )
-      : <></>
+    <>
+      <AccountInfo account={account} />
+      <TransferHistory transfers={transfers} account={account} />
+      <TransferButton />
+    </>
   );
 }
 

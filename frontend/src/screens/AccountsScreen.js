@@ -11,16 +11,14 @@ function AccountsScreen({ accounts, fetchAccounts, token }) {
   );
 
   return (
-    <>
-      <Content>
-        {accounts.map((account) => (
-          <AccountCard
-            account={account}
-            key={account.id}
-          />
-        ))}
-      </Content>
-    </>
+    <Content>
+      {accounts.map((account) => (
+        <AccountCard
+          account={account}
+          key={account.id}
+        />
+      ))}
+    </Content>
   );
 }
 

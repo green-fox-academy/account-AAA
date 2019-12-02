@@ -10,13 +10,16 @@ export default function TransferHistory({ transfers, account }) {
     <>
       <Text style={styles.historyTag}>History</Text>
       <Content>
-        {transfers.map((transfer) => (
-          <TransferRecord
-            transfer={transfer}
-            account={account}
-            key={transfer.transferId}
-          />
-        ))}
+        {transfers.length > 0
+          ? (transfers.map((transfer) => (
+            <TransferRecord
+              transfer={transfer}
+              account={account}
+              key={transfer.transferId}
+            />
+          ))
+          )
+          : <></>}
       </Content>
     </>
   );
