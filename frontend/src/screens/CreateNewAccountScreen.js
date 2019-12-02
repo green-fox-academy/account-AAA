@@ -22,6 +22,7 @@ export default function CreateNewAccountScreen({ navigation, token, postNewAccou
   };
 
   return (
+
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
       <View style={{ flex: 0.5 }}>
         <Text style={styles.text}>Name of deposit account</Text>
