@@ -1,5 +1,9 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
+<<<<<<< HEAD
+=======
+
+>>>>>>> JSAP-41: FRONT END CONNECT
 import {
   Button, Item, Text, Icon, Input,
 } from 'native-base';
