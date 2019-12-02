@@ -1,6 +1,6 @@
 import config from '../config';
 
-export default function fetchAccountsAction(depositId, authToken) {
+export default function fetchTransfersAction(depositId, authToken) {
   return async function (dispatch) {
     try {
       const result = await fetch(`http://${config.serverAddress}:${config.port}/deposit/${depositId}`, {
@@ -16,7 +16,7 @@ export default function fetchAccountsAction(depositId, authToken) {
       });
     } catch (error) {
       dispatch({
-        type: 'FETCH_ACCOUNT_ERROR',
+        type: 'FETCH_TRANSFERS_ERROR',
         error,
       });
     }
