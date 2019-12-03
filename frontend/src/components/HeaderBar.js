@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import {
   Header, Left, Body, Right, Button, Icon, Title, Input,
 } from 'native-base';
@@ -94,17 +93,10 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  updateDisplay: (displayName) => dispatch({
-    type: 'UPDATE_DISPLAY',
-    displayName,
-  }),
-});
-
 HeaderBar.propTypes = {
   updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   navigation: navigationPropTypes.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(HeaderBar);
+export default HeaderBar;
