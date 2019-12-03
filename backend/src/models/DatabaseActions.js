@@ -3,16 +3,7 @@ module.exports = class DatabaseActions {
     this.connection = connection;
   }
 
-  async insertAccount(depositName, userId) {
-    try {
-      const insertAccountQuery = 'INSERT INTO accounts (depositName, userId) VALUES (?, ?);';
-      const inserted = await this.execQuery(insertAccountQuery, [depositName, userId]);
-      return inserted.insertId;
-    } catch (error) {
-      throw error;
-    }
-  }
-
+  // find all acounts of a user
   async getAccountsByUserId(userId) {
     try {
       const getAccountsByUserIdQuery = 'SELECT id, depositName, depositAmount, interestRate FROM accounts WHERE userId = ?;';
@@ -23,6 +14,18 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // insert new account
+  async insertAccount(depositName, userId) {
+    try {
+      const insertAccountQuery = 'INSERT INTO accounts (depositName, userId) VALUES (?, ?);';
+      const inserted = await this.execQuery(insertAccountQuery, [depositName, userId]);
+      return inserted.insertId;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // find if an account already exist
   async findAccount(depositName) {
     try {
       const findAccountQuery = 'SELECT * FROM accounts WHERE depositName=?;';
@@ -33,6 +36,7 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // get user name from Id
   async getUserNameById(userId) {
     try {
       const findFullNameQuery = 'SELECT CONCAT(firstName,  " ", lastName) AS fullName from users WHERE userId=?';
@@ -43,6 +47,7 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // get account name from Id
   async getAccountNameById(depositId) {
     try {
       const findAccountNameQuery = 'SELECT depositName from accounts WHERE id=?';
@@ -53,7 +58,19 @@ module.exports = class DatabaseActions {
     }
   }
 
-  async getAccountDetails(depositId, userId) {
+  // get account owners id
+  async getUserIdByAccount(depositId) {
+    try {
+      const findUserIdQuery = 'SELECT userId from accounts WHERE id=?';
+      const queryResult = await this.execQuery(findUserIdQuery, [depositId]);
+      return queryResult[0].userId;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // get all transfer records related to an account
+  async getTransferRecords(depositId, userId) {
     try {
       const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? )'
       + ' OR (toDepositId = ? AND toUserId = ? ) ;';
@@ -65,9 +82,10 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // add direction and userName, accountName into transfer record
   async getTransfers(depositId, userId) {
     try {
-      const transfers = await this.getAccountDetails(depositId, userId);
+      const transfers = await this.getTransferRecords(depositId, userId);
       // eslint-disable-next-line no-restricted-syntax
       for (const transfer of transfers) {
         transfer.direction = (parseInt(depositId) === transfer.toDepositId
@@ -81,6 +99,70 @@ module.exports = class DatabaseActions {
         }
       }
       return transfers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // retrive transfer records from id
+  async getTransferByTransferId(transferId) {
+    try {
+      const findTransferQuery = 'SELECT * FROM transferDetails WHERE transferId=?;';
+      const queryResult = await this.execQuery(findTransferQuery, [transferId]);
+      return queryResult[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // update balance
+  async changeAccountBalance(depositId, amount, action = '+') {
+    try {
+      const queryString = `UPDATE accounts SET depositAmount=depositAmount${action}? WHERE id=?`;
+      await this.execQuery(queryString, [amount, depositId]);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // check if sender's account have enough to transfer
+  async validateTransfer(depositId, transferAmount) {
+    try {
+      const queryString = 'SELECT depositAmount FROM accounts WHERE id=?';
+      const balance = await this.execQuery(queryString, [depositId]);
+      return transferAmount <= balance[0].depositAmount;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // insert transfer record
+  async insertTransfer(transferInfo) {
+    try {
+      const insertTransferQuery = 'INSERT INTO transferDetails (transferAmount, fromUserId, fromDepositId, toUserId, toDepositId, status, selfTransfer)'
+        + 'values (?, ?, ?, ?, ?, ?, ?)';
+      const inserted = await this.execQuery(insertTransferQuery, transferInfo);
+      const result = await this.getTransferByTransferId(inserted.insertId);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // make transfers
+  async makeTransfer({
+    senderDepositId, senderId, receiverDepositId, receiverId, transferAmount,
+  }) {
+    try {
+      const isTransferValid = await this.validateTransfer(senderDepositId, transferAmount);
+      if (isTransferValid) {
+        const transferInfo = [transferAmount, senderId, senderDepositId, receiverId, receiverDepositId, 'done', senderId === receiverId];
+        const result = await this.insertTransfer(transferInfo);
+        await this.changeAccountBalance(senderDepositId, transferAmount, '-');
+        await this.changeAccountBalance(receiverDepositId, transferAmount);
+        return result;
+      }
+      throw new Error('InsufficientBalance');
     } catch (error) {
       throw error;
     }

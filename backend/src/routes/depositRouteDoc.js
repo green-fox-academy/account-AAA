@@ -66,7 +66,7 @@
  * /depositId:
  *   get:
  *     tags:
- *       - depositId
+ *       - Deposits
  *     name: Retrive deposit accounts
  *     summary: Retrive all the transaction after we input depositId
  *     security:
