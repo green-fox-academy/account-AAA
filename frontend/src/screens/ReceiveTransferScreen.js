@@ -7,11 +7,14 @@ import styles from '../styles/ReceiveTransferScreenStyle';
 export default function ReceiveTransferScreen({ navigation }) {
   const depositId = navigation.getParam('depositId');
   const depositName = navigation.getParam('depositName');
+  const codeData = {
+    depositId,
+  };
   return (
     <View style={styles.receiveScreenView}>
       <Text style={styles.depositName}>{depositName}</Text>
       <QRCode
-        value={`${depositId}`}
+        value={JSON.stringify(codeData)}
         size={300}
       />
     </View>
