@@ -5,15 +5,18 @@ import ReceiveTransferScreen from '../screens/ReceiveTransferScreen';
 describe('<ReceiveTransferScreen />', () => {
   it('render correctly', () => {
     const data = {
-      depositId: 1,
-      depositName: 'Main Account',
-      userId: 123,
+      account: {
+        id: 1,
+        depositName: 'Main Account',
+      },
     };
     const navigation = {
-      getParam: (id) => data[id],
+      getParam: (key) => data[key],
     };
     const tree = renderer
-      .create(<ReceiveTransferScreen navigation={navigation} />)
+      .create(
+        <ReceiveTransferScreen navigation={navigation} userId={123} />,
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
