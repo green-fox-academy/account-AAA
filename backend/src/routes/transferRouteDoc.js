@@ -21,28 +21,19 @@
  *           type: object
  *           required:
  *             - senderDepositId
-<<<<<<< HEAD
  *             - senderId
  *             - receiverDepositId
  *             - receiverId
-=======
- *             - receiverDepositId
->>>>>>> code(JSAP-12): transfer backend done
  *             - transferAmount
  *           properties:
  *             senderDepositId:
  *               type: number
-<<<<<<< HEAD
  *             senderId:
  *               type: number
  *             receiverDepositId:
  *               type: number
  *             receiverId:
  *               type: number
-=======
- *             receiverDepositId:
- *               type: number
->>>>>>> code(JSAP-12): transfer backend done
  *             transferAmount:
  *               type: number
  *     responses:
