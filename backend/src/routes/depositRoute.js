@@ -1,20 +1,20 @@
 const depositRoute = require('express').Router();
 const connection = require('../../db/connection');
 const DatabaseActions = require('../models/DatabaseActions');
-const DepositRequestValidator = require('../services/DepositRequestValidator');
+const RequestValidator = require('../services/RequestValidator');
 
+const requestValidator = new RequestValidator();
 const databaseActions = new DatabaseActions(connection);
-const depositRequestValidator = new DepositRequestValidator();
 
 depositRoute.post('/', async (req, res) => {
-  if (!depositRequestValidator.validateContentType(req.headers['content-type'])) {
+  if (!requestValidator.validateContentType(req.headers['content-type'])) {
     res.status(415).send('Content-type must be application/json.');
     return;
   }
 
   // validate body content
   const requiredKeys = ['depositName'];
-  const missingKeys = depositRequestValidator.findMissingKeys(requiredKeys, Object.keys(req.body));
+  const missingKeys = requestValidator.findMissingKeys(requiredKeys, Object.keys(req.body));
   if (missingKeys.length > 0) {
     res.status(400).send(`Missing ${missingKeys}.`);
     return;
