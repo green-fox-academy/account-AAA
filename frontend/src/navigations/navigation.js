@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AccountsScreen from '../screens/AccountsScreen';
 import CreateNewAccountScreen from '../screens/CreateNewAccountScreen';
 import AccountDetailScreen from '../screens/AccountDetailScreen';
+import ReceiveTransferScreen from '../screens/ReceiveTransferScreen';
 import HeaderBar from '../components/HeaderBar';
 
 const RootStack = createStackNavigator(
@@ -31,6 +32,12 @@ const RootStack = createStackNavigator(
       screen: AccountDetailScreen,
       navigationOptions: ({ navigation }) => ({
         header: <HeaderBar pageTitle="Details" navigation={navigation} />,
+      }),
+    },
+    ReceiveTransfer: {
+      screen: ReceiveTransferScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: <HeaderBar pageTitle="Receive transfer" navigation={navigation} />,
       }),
     },
   },
