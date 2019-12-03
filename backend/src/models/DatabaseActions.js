@@ -150,13 +150,13 @@ module.exports = class DatabaseActions {
   }
 
   // make transfers
-  async makeTransfer({ senderDepositId, receiverDepositId, transferAmount }) {
+  async makeTransfer({
+    senderDepositId, senderId, receiverDepositId, receiverId, transferAmount,
+  }) {
     try {
       const isTransferValid = await this.validateTransfer(senderDepositId, transferAmount);
       if (isTransferValid) {
-        const fromUserId = await this.getUserIdByAccount(senderDepositId);
-        const toUserId = await this.getUserIdByAccount(receiverDepositId);
-        const transferInfo = [transferAmount, fromUserId, senderDepositId, toUserId, receiverDepositId, 'done', fromUserId === toUserId];
+        const transferInfo = [transferAmount, senderId, senderDepositId, receiverId, receiverDepositId, 'done', senderId === receiverId];
         const result = await this.insertTransfer(transferInfo);
         await this.changeAccountBalance(senderDepositId, transferAmount, '-');
         await this.changeAccountBalance(receiverDepositId, transferAmount);

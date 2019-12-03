@@ -1,14 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode-svg';
 import { Text, View } from 'native-base';
+import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/ReceiveTransferScreenStyle';
 
-export default function ReceiveTransferScreen({ navigation }) {
-  const depositId = navigation.getParam('depositId');
-  const depositName = navigation.getParam('depositName');
+function ReceiveTransferScreen({ userId, navigation }) {
+  const { id, depositName } = navigation.getParam('account');
   const codeData = {
-    depositId,
+    depositId: id,
+    userId,
   };
   return (
     <View style={styles.receiveScreenView}>
@@ -21,6 +23,13 @@ export default function ReceiveTransferScreen({ navigation }) {
   );
 }
 
+const mapStateToProps = ({ userReducer }) => ({
+  userId: userReducer.user.userId,
+});
+
 ReceiveTransferScreen.propTypes = {
+  userId: PropTypes.number.isRequired,
   navigation: navigationPropTypes.isRequired,
 };
+
+export default connect(mapStateToProps)(ReceiveTransferScreen);

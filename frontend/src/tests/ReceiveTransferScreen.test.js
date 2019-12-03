@@ -7,6 +7,7 @@ describe('<ReceiveTransferScreen />', () => {
     const data = {
       depositId: 1,
       depositName: 'Main Account',
+      userId: 123,
     };
     const navigation = {
       getParam: (id) => data[id],

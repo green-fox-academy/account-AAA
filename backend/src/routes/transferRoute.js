@@ -13,7 +13,7 @@ transferRoute.post('/', async (req, res) => {
   }
 
   // validate body content
-  const requiredKeys = ['senderDepositId', 'receiverDepositId', 'transferAmount'];
+  const requiredKeys = ['senderDepositId', 'senderId', 'receiverDepositId', 'receiverId', 'transferAmount'];
   const missingKeys = requestValidator.findMissingKeys(requiredKeys, Object.keys(req.body));
   if (missingKeys.length > 0) {
     res.status(400).send(`Missing ${missingKeys}.`);
@@ -28,7 +28,7 @@ transferRoute.post('/', async (req, res) => {
     // eslint-disable-next-line no-console
     console.log(error);
     if (error.message === 'InsufficientBalance') {
-      res.status(422).send('Remaining Balance is not emouth to make this transfer.');
+      res.status(422).send('Remaining Balance is not enough to make this transfer.');
     } else {
       res.status(500).send('Something went wrong, please try again later.');
     }

@@ -7,24 +7,18 @@ import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/AccountActionsStyle';
 
 function AccountActions({ account, navigation }) {
-  const navToDetail = (event) => {
-    event.preventDefault();
-    navigation.navigate('AccountDetail', { account });
-  };
-
-  const navToReceive = (event) => {
-    event.preventDefault();
-    navigation.navigate('ReceiveTransfer', { depositId: account.id, depositName: account.depositName });
+  const navToNextPage = (screenName) => {
+    navigation.navigate(screenName, { account });
   };
 
   return (
     <CardItem style={styles.accountActions}>
-      <Button footer onPress={navToDetail} transparent>
+      <Button footer onPress={() => navToNextPage('AccountDetail')} transparent>
         <FontAwesome name="history" size={18} />
         <Text style={styles.buttonText}>DETAILS</Text>
       </Button>
 
-      <Button footer onPress={navToReceive} transparent>
+      <Button footer onPress={() => navToNextPage('ReceiveTransfer')} transparent>
         <FontAwesome name="get-pocket" size={18} />
         <Text style={styles.buttonText}>RECEIVE</Text>
       </Button>

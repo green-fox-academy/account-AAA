@@ -21,12 +21,18 @@
  *           type: object
  *           required:
  *             - senderDepositId
+ *             - senderId
  *             - receiverDepositId
+ *             - receiverId
  *             - transferAmount
  *           properties:
  *             senderDepositId:
  *               type: number
+ *             senderId:
+ *               type: number
  *             receiverDepositId:
+ *               type: number
+ *             receiverId:
  *               type: number
  *             transferAmount:
  *               type: number
