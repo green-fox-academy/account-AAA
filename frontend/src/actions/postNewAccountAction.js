@@ -11,19 +11,19 @@ export default function postNewAccountAction(accountName, authToken) {
         },
         body: JSON.stringify({ depositName: accountName }),
       });
-      const data = await response.json();
+      const responseBody = await response.json();
       if (response.status === 200) {
         dispatch({
           type: 'POST_NEW_ACCOUNT',
-          accountName: data,
+          account: responseBody,
         });
       } else {
-        throw response;
+        throw responseBody;
       }
-    } catch (response) {
+    } catch (responseBody) {
       dispatch({
         type: 'POST_NEW_ACCOUNT_ERROR',
-        err: response.message,
+        err: responseBody.message,
       });
     }
   };

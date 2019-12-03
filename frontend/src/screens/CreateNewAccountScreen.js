@@ -1,19 +1,17 @@
 import React from 'react';
-import { View, KeyboardAvoidingView } from 'react-native';
-<<<<<<< HEAD
-=======
-
->>>>>>> JSAP-41: FRONT END CONNECT
+import { View, KeyboardAvoidingView, connect } from 'react-native';
 import {
   Button, Item, Text, Icon, Input,
 } from 'native-base';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
 import buttonStyle from '../styles/BottomButtonStyle';
 import navigationPropTypes from '../helpers/navigationPropTypes';
+import postNewAccountAction from '../actions/postNewAccountAction';
 
 
-export default function CreateNewAccountScreen({ navigation, token, postNewAccount }) {
+function CreateNewAccountScreen({ navigation, token, postNewAccount }) {
   const [accountName, onChangeText] = React.useState('');
 
   const handleChange = ({ nativeEvent }) => {
@@ -61,3 +59,15 @@ CreateNewAccountScreen.propTypes = {
   token: PropTypes.string.isRequired,
   postNewAccount: PropTypes.func.isRequired,
 };
+const mapStateToProps = ({ userReducer, accountsReducer }) => ({
+  token: userReducer.user.token,
+  accounts: accountsReducer.accounts.filter((account) => (
+    account.depositName.includes(accountsReducer.displayName)
+  )),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  postNewAccount: (token) => { dispatch(postNewAccountAction(token)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CreateNewDeposit));

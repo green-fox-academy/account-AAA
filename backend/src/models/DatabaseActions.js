@@ -36,7 +36,16 @@ module.exports = class DatabaseActions {
     }
   }
 
-  // get user name from Id
+  async getAccountByDepositId(depositId) {
+    try {
+      const getAccountQuery = 'SELECT * FROM accounts WHERE id=?;';
+      const queryResult = await this.execQuery(getAccountQuery, [depositId]);
+      return queryResult[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getUserNameById(userId) {
     try {
       const findFullNameQuery = 'SELECT CONCAT(firstName,  " ", lastName) AS fullName from users WHERE userId=?';
