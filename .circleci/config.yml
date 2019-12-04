@@ -2,6 +2,10 @@ version: 2
 jobs:
   # test and deploy backend
   build:
+    branches:
+      only:
+        - master
+        - JSAP-57-circle-ci
     docker:
       - image: circleci/node:10.16.3
     working_directory: ~/repo
