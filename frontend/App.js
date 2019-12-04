@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Container } from 'native-base';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { Provider } from 'react-redux';
@@ -24,9 +23,7 @@ export default function App() {
 
   return !isReady ? <AppLoading /> : (
     <Provider store={store}>
-      <Container>
-        <AppContainer />
-      </Container>
+      <AppContainer />
     </Provider>
   );
 }
