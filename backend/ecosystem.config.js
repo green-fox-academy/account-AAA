@@ -14,7 +14,6 @@ module.exports = {
     production: {
       user: 'ubuntu',
       host: '3.112.128.181',
-      key: './.ssh/JSA-aaa-kp.pem',
       ref: 'origin/master',
       repo: 'git@github.com:green-fox-academy/account-AAA.git',
       path: '/home/ubuntu/account-AAA',
