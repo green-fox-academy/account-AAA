@@ -1,4 +1,6 @@
 import React from 'react';
+import { Platform, StatusBar } from 'react-native';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from '../screens/HomeScreen';
@@ -43,6 +45,9 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
+    cardStyle: {
+      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
+    },
   },
 );
 
