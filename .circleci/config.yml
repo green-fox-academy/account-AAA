@@ -1,0 +1,51 @@
+version: 2
+jobs:
+  # test and deploy backend
+  build:
+    branches:
+      only:
+        - master
+        - JSAP-57-circle-ci
+    docker:
+      - image: circleci/node:10.16.3
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:yuy6UwiLjRBDlXsiohfUA+stWZBF71HUmfWReb6wRDY"
+
+      - restore_cache:
+          keys:
+            - account-app-dependencies-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
+            - account-app-dependencies-
+
+      - run: 
+          name: install all packages
+          command: npm run install-all
+
+      - save_cache:
+          paths:
+            - ./backend/node_modules
+            - ./frontend/node_modules
+          key: account-app-dependencies-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
+
+      - run: 
+          name: backend test
+          command: cd backend && npm test
+      
+      - run:
+          name: frontend test
+          command: cd frontend && npm test
+      
+      - run:
+          name: modify ssh config
+          command: |
+            echo 'Host *' >> ~/.ssh/config
+            echo 'StrictHostKeyChecking no' >> ~/.ssh/config
+      
+      - run:
+          name: pm2 deploy
+          command: cd backend && npm run deploy
