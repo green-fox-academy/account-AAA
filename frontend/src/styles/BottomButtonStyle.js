@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 50,
-    marginTop:20,
+    marginTop: 20,
     marginRight: 30,
     width: 120,
     shadowColor: '#000',
@@ -19,13 +19,13 @@ export default StyleSheet.create({
     paddingRight: 0,
     marginRight: 0,
   },
-  message:{
+  message: {
     marginRight: 50,
-    color:'grey',
+    color: 'grey',
   },
-  view:{
-     flex: 6,  
-     flexDirection: 'column', 
-     alignItems: 'flex-end',
-  }
+  view: {
+    flex: 6,
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
 });

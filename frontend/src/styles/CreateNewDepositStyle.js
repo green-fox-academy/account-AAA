@@ -9,10 +9,10 @@ export default StyleSheet.create({
     shadowRadius: 2,
     marginLeft: 15,
     marginTop: 10,
-    color: 	'#FFA500',
+    color: '#FFA500',
   },
   inputAccount: {
-    marginLeft:20,
+    marginLeft: 20,
     width: '80%',
     color: '#FFA500',
   },

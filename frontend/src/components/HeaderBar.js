@@ -12,7 +12,9 @@ const initSearchState = {
   content: '',
 };
 
-function HeaderBar({ updateDisplay, pageTitle, navigation,createNewPage }) {
+function HeaderBar({
+  updateDisplay, pageTitle, navigation, createNewPage,
+}) {
   const [searchState, setSearchState] = useState(initSearchState);
   const toggleSearchInput = () => {
     setSearchState({
@@ -30,12 +32,10 @@ function HeaderBar({ updateDisplay, pageTitle, navigation,createNewPage }) {
   };
 
 
-
   const navToCreatePage = () => {
     setSearchState(initSearchState);
     createNewPage();
     navigation.navigate('NewAccount');
-
   };
 
   const handleGoBack = (event) => {
@@ -97,6 +97,21 @@ function HeaderBar({ updateDisplay, pageTitle, navigation,createNewPage }) {
     </Header>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  updateDisplay: (displayName) => {
+    dispatch({
+      type: 'UPDATE_DISPLAY',
+      displayName,
+    });
+  },
+  createNewPage: () => {
+    dispatch({
+      type: 'START_A_NEW_PAGE',
+    });
+  },
+});
+
 
 HeaderBar.propTypes = {
   updateDisplay: PropTypes.func.isRequired,

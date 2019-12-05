@@ -1,3 +1,4 @@
+/* eslint consistent-return: "error" */
 import config from '../config';
 
 export default function postNewAccountAction(accountName, authToken) {
@@ -20,7 +21,6 @@ export default function postNewAccountAction(accountName, authToken) {
           type: 'POST_NEW_ACCOUNT',
           account: responseBody,
         });
-
       } else {
         throw responseBody;
       }
@@ -29,7 +29,6 @@ export default function postNewAccountAction(accountName, authToken) {
         type: 'POST_NEW_ACCOUNT_ERROR',
         err: responseBody.message,
       });
-      return responseBody;
     }
   };
 }
