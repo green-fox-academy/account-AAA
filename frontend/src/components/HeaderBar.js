@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/HeaderBarStyle';
 
+
 const initSearchState = {
   status: false,
   content: '',
 };
 
-function HeaderBar({ updateDisplay, pageTitle, navigation }) {
+function HeaderBar({ updateDisplay, pageTitle, navigation,createNewPage }) {
   const [searchState, setSearchState] = useState(initSearchState);
   const toggleSearchInput = () => {
     setSearchState({
@@ -28,9 +29,13 @@ function HeaderBar({ updateDisplay, pageTitle, navigation }) {
     });
   };
 
+
+
   const navToCreatePage = () => {
     setSearchState(initSearchState);
+    createNewPage();
     navigation.navigate('NewAccount');
+
   };
 
   const handleGoBack = (event) => {
@@ -97,6 +102,7 @@ HeaderBar.propTypes = {
   updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   navigation: navigationPropTypes.isRequired,
+  createNewPage: PropTypes.func.isRequired,
 };
 
 export default HeaderBar;
