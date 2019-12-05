@@ -6,6 +6,11 @@ const mapDispatchToProps = (dispatch) => ({
     type: 'UPDATE_DISPLAY',
     displayName,
   }),
+  createNewPage: () => {
+    dispatch({
+      type: 'START_A_NEW_PAGE',
+    });
+  },
 });
 
 export default connect(null, mapDispatchToProps)(HeaderBar);

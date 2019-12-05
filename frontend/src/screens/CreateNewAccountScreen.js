@@ -3,15 +3,14 @@ import { View, KeyboardAvoidingView, connect } from 'react-native';
 import {
   Button, Item, Text, Icon, Input,
 } from 'native-base';
-import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
 import buttonStyle from '../styles/BottomButtonStyle';
 import navigationPropTypes from '../helpers/navigationPropTypes';
-import postNewAccountAction from '../actions/postNewAccountAction';
 
 
-function CreateNewDeposit({
+
+export default function CreateNewAccountScreen({
   navigation, token, postNewAccount, status,
 }) {
   const [accountName, onChangeText] = React.useState('');
@@ -38,7 +37,7 @@ function CreateNewDeposit({
           warning
         >
           <Icon name="add" />
-          <Text>Go Back</Text>
+          <Text style={{color:'white'}}>Go Back</Text>
         </Button>
       </View>
     );
@@ -57,7 +56,7 @@ function CreateNewDeposit({
             warning
           >
             <Icon name="add" />
-            <Text>Create</Text>
+            <Text style={{color:'white'}}>Create</Text>
           </Button>
         </View>
 
@@ -74,7 +73,7 @@ function CreateNewDeposit({
             warning
           >
             <Icon name="add" />
-            <Text>Create</Text>
+            <Text style={{color:'white'}}>Create</Text>
           </Button>
         </View>
       );
@@ -114,14 +113,5 @@ CreateNewAccountScreen.propTypes = {
   postNewAccount: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
 };
-const mapStateToProps = ({ userReducer, accountsReducer }) => ({
-  token: userReducer.user.token,
-  status: accountsReducer.status,
 
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  postNewAccount: (accountName, token) => { dispatch(postNewAccountAction(accountName, token)); },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(CreateNewDeposit));

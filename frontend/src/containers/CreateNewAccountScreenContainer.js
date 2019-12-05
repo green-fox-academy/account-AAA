@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import postNewAccountAction from '../actions/postNewAccountAction';
 import CreateNewAccountScreen from '../screens/CreateNewAccountScreen';
 
-const mapStateToProps = (state) => ({
-  token: state.userReducer.user.token,
+const mapStateToProps = ({ userReducer, accountsReducer }) => ({
+  token: userReducer.user.token,
+  status: accountsReducer.status,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -11,3 +13,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateNewAccountScreen);
+

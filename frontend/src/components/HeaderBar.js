@@ -98,19 +98,7 @@ function HeaderBar({
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  updateDisplay: (displayName) => {
-    dispatch({
-      type: 'UPDATE_DISPLAY',
-      displayName,
-    });
-  },
-  createNewPage: () => {
-    dispatch({
-      type: 'START_A_NEW_PAGE',
-    });
-  },
-});
+
 
 
 HeaderBar.propTypes = {
