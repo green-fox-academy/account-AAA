@@ -99,8 +99,6 @@ function HeaderBar({
 }
 
 
-
-
 HeaderBar.propTypes = {
   updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, connect } from 'react-native';
+import { View, KeyboardAvoidingView } from 'react-native';
 import {
   Button, Item, Text, Icon, Input,
 } from 'native-base';
@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
 import buttonStyle from '../styles/BottomButtonStyle';
 import navigationPropTypes from '../helpers/navigationPropTypes';
-
 
 
 export default function CreateNewAccountScreen({
@@ -37,7 +36,7 @@ export default function CreateNewAccountScreen({
           warning
         >
           <Icon name="add" />
-          <Text style={{color:'white'}}>Go Back</Text>
+          <Text style={{ color: 'white' }}>Go Back</Text>
         </Button>
       </View>
     );
@@ -56,7 +55,7 @@ export default function CreateNewAccountScreen({
             warning
           >
             <Icon name="add" />
-            <Text style={{color:'white'}}>Create</Text>
+            <Text style={{ color: 'white' }}>Create</Text>
           </Button>
         </View>
 
@@ -73,7 +72,7 @@ export default function CreateNewAccountScreen({
             warning
           >
             <Icon name="add" />
-            <Text style={{color:'white'}}>Create</Text>
+            <Text style={{ color: 'white' }}>Create</Text>
           </Button>
         </View>
       );
@@ -113,5 +112,3 @@ CreateNewAccountScreen.propTypes = {
   postNewAccount: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
 };
-
-
