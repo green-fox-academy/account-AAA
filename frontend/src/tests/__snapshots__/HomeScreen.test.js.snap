@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeScreen /> render correctly 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "transparent",
+      "borderBottomWidth": 1,
+      "borderColor": "#007aff",
+      "borderLeftWidth": 1,
+      "borderRadius": 5,
+      "borderRightWidth": 1,
+      "borderTopWidth": 1,
+      "borderWidth": 1,
+      "elevation": null,
+      "flexDirection": "row",
+      "height": 45,
+      "justifyContent": "space-between",
+      "marginTop": 100,
+      "opacity": 1,
+      "paddingBottom": 6,
+      "paddingTop": 6,
+      "shadowColor": null,
+      "shadowOffset": null,
+      "shadowOpacity": null,
+      "shadowRadius": null,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "color": "#007aff",
+        "fontFamily": "System",
+        "fontSize": 16.5,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+    uppercase={false}
+  >
+    Accounts
+  </Text>
+</View>
+`;

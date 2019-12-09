@@ -5,7 +5,7 @@ export default function postNewAccountAction(accountName, authToken) {
   return async function (dispatch) {
     try {
       dispatch({
-        type: 'START_A_NEW_PAGE',
+        type: 'POST_NEW_ACCOUNT_START',
       });
       const response = await fetch(`http://${config.serverAddress}:${config.port}/deposit`, {
         method: 'POST',
@@ -18,7 +18,7 @@ export default function postNewAccountAction(accountName, authToken) {
       const responseBody = await response.json();
       if (response.status === 200) {
         dispatch({
-          type: 'POST_NEW_ACCOUNT',
+          type: 'POST_NEW_ACCOUNT_DONE',
           account: responseBody,
         });
       } else {

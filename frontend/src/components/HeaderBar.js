@@ -13,7 +13,7 @@ const initSearchState = {
 };
 
 function HeaderBar({
-  updateDisplay, pageTitle, navigation, createNewPage,
+  updateDisplay, pageTitle, navigation, createNewAccount,
 }) {
   const [searchState, setSearchState] = useState(initSearchState);
   const toggleSearchInput = () => {
@@ -34,7 +34,7 @@ function HeaderBar({
 
   const navToCreatePage = () => {
     setSearchState(initSearchState);
-    createNewPage();
+    createNewAccount();
     navigation.navigate('NewAccount');
   };
 
@@ -103,7 +103,7 @@ HeaderBar.propTypes = {
   updateDisplay: PropTypes.func.isRequired,
   pageTitle: PropTypes.string.isRequired,
   navigation: navigationPropTypes.isRequired,
-  createNewPage: PropTypes.func.isRequired,
+  createNewAccount: PropTypes.func.isRequired,
 };
 
 export default HeaderBar;

@@ -6,9 +6,9 @@ const mapDispatchToProps = (dispatch) => ({
     type: 'UPDATE_DISPLAY',
     displayName,
   }),
-  createNewPage: () => {
+  createNewAccount: () => {
     dispatch({
-      type: 'START_A_NEW_PAGE',
+      type: 'POST_NEW_ACCOUNT_START',
     });
   },
 });

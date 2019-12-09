@@ -1,84 +1,18 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
 import {
-  Button, Item, Text, Icon, Input,
+  Item, Input,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
-import buttonStyle from '../styles/BottomButtonStyle';
-import navigationPropTypes from '../helpers/navigationPropTypes';
+import RenderGoBackButton from '../components/renderGoBackButton';
+import RenderCreateButton from '../components/renderCreateButton';
 
-
-export default function CreateNewAccountScreen({
-  navigation, token, postNewAccount, status,
-}) {
-  const [accountName, onChangeText] = React.useState('');
+export default function CreateNewAccountScreen({ postNewAccount, token, status }) {
+  const [accountName, setAccountName] = React.useState('');
   const handleChange = (value) => {
-    onChangeText(value);
+    setAccountName(value);
   };
-
-
-  const handlePress = () => {
-    postNewAccount(accountName, token);
-  };
-
-  function renderGoBackButton() {
-    return (
-      <View style={buttonStyle.view}>
-        <Text style={buttonStyle.message}>Success!</Text>
-        <Button
-          style={buttonStyle.button}
-          onPress={() => {
-            navigation.navigate('Accounts');
-          }}
-          iconLeft
-          rounded
-          warning
-        >
-          <Icon name="add" />
-          <Text style={{ color: 'white' }}>Go Back</Text>
-        </Button>
-      </View>
-    );
-  }
-
-  function renderCreateButton() {
-    if (status === '') {
-      return (
-        <View style={buttonStyle.view}>
-          <Text style={buttonStyle.message} />
-          <Button
-            style={buttonStyle.button}
-            onPress={handlePress}
-            iconLeft
-            rounded
-            warning
-          >
-            <Icon name="add" />
-            <Text style={{ color: 'white' }}>Create</Text>
-          </Button>
-        </View>
-
-      );
-    } if (status === 'error') {
-      return (
-        <View style={buttonStyle.view}>
-          <Text style={buttonStyle.message}>Duplicated name, please change one.</Text>
-          <Button
-            style={buttonStyle.button}
-            onPress={handlePress}
-            iconLeft
-            rounded
-            warning
-          >
-            <Icon name="add" />
-            <Text style={{ color: 'white' }}>Create</Text>
-          </Button>
-        </View>
-      );
-    }
-    return true;
-  }
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
@@ -88,7 +22,7 @@ export default function CreateNewAccountScreen({
         <Item style={{ margin: 10, width: '85%' }}>
           <Input
             style={styles.inputAccount}
-            placeholder="Enter deposit account"
+            placeholder="Deposit account name"
             name="accountName"
             onChangeText={handleChange}
             value={accountName}
@@ -99,7 +33,7 @@ export default function CreateNewAccountScreen({
         flex: 6, marginTop: 30, flexDirection: 'column', alignItems: 'flex-end',
       }}
       >
-        {status === 'done' ? renderGoBackButton() : renderCreateButton() }
+        {status === 'done' ? <RenderGoBackButton /> : <RenderCreateButton postNewAccount={postNewAccount} token={token} status={status} accountName={accountName} />}
       </View>
 
     </KeyboardAvoidingView>
@@ -107,7 +41,6 @@ export default function CreateNewAccountScreen({
 }
 
 CreateNewAccountScreen.propTypes = {
-  navigation: navigationPropTypes.isRequired,
   token: PropTypes.string.isRequired,
   postNewAccount: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
