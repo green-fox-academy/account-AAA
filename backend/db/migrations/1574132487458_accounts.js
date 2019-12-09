@@ -4,6 +4,7 @@ module.exports = {
       + 'depositName VARCHAR(255) NOT NULL, '
       + 'depositAmount BIGINT DEFAULT 0, '
       + 'userId INT,'
-      + 'interestRate FLOAT DEFAULT 0);',
+      + 'interestRate FLOAT DEFAULT 0,'
+      + 'createdAt timestamp);',
   down: 'DROP TABLE accounts;',
 };
