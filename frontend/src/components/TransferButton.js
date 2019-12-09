@@ -3,7 +3,7 @@ import { Button, Text, View } from 'native-base';
 import { FontAwesome } from '@expo/vector-icons';
 import buttonStyle from '../styles/BottomButtonStyle';
 
-export default function TansferButton() {
+export default function TransferButton() {
   return (
     <View style={{ alignItems: 'flex-end' }}>
       <Button style={buttonStyle.button} iconLeft rounded warning>
