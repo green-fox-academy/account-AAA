@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+
 
 export default StyleSheet.create({
   button: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 50,
-    marginTop: 20,
+    marginBottom: Platform.OS === 'ios' ? 50 : 100,
     marginRight: 30,
     width: 120,
     shadowColor: '#000',

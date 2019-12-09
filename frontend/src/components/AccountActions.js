@@ -23,7 +23,7 @@ function AccountActions({ account, navigation }) {
         <Text style={styles.buttonText}>RECEIVE</Text>
       </Button>
 
-      <Button footer onPress={() => { alert('transfer'); }} button transparent>
+      <Button footer onPress={() => navToNextPage('Transfer')} button transparent>
         <FontAwesome name="dollar" size={18} />
         <Text style={styles.buttonText}>TRANSFER</Text>
       </Button>

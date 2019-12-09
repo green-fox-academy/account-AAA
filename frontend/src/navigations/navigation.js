@@ -8,6 +8,10 @@ import CreateNewAccountScreen from '../containers/CreateNewAccountScreenContaine
 import AccountDetailScreen from '../containers/AccountDetailScreenContainer';
 import ReceiveTransferScreen from '../containers/ReceiveTransferScreenContainer';
 import HeaderBar from '../containers/HeaderBarContainer';
+import TransferScreen from '../screens/TransferScreen';
+import InternalTransactionScreen from '../containers/InternalTransactionScreenContainer';
+import ExternalTransactionScreen from '../screens/ExternalTransactionScreen';
+
 
 const RootStack = createStackNavigator(
   {
@@ -39,6 +43,24 @@ const RootStack = createStackNavigator(
       screen: ReceiveTransferScreen,
       navigationOptions: ({ navigation }) => ({
         header: <HeaderBar pageTitle="Receive transfer" navigation={navigation} />,
+      }),
+    },
+    Transfer: {
+      screen: TransferScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: <HeaderBar pageTitle="Transfer Screen" navigation={navigation} />,
+      }),
+    },
+    InternalTransaction: {
+      screen: InternalTransactionScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: <HeaderBar pageTitle="Internal Transaction" navigation={navigation} />,
+      }),
+    },
+    ExternalTransaction: {
+      screen: ExternalTransactionScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: <HeaderBar pageTitle="External Transaction" navigation={navigation} />,
       }),
     },
   },
