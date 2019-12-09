@@ -1,58 +1,47 @@
 import React from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
 import {
-  Button, Item, Text, Icon, Input,
+  Item, Input,
 } from 'native-base';
 import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
-import buttonStyle from '../styles/BottomButtonStyle';
-import navigationPropTypes from '../helpers/navigationPropTypes';
+import RenderGoBackButton from '../components/renderGoBackButton';
+import CreateButton from '../components/CreateButton';
 
-
-export default function CreateNewAccountScreen({ navigation, token, postNewAccount }) {
-  const [accountName, onChangeText] = React.useState('');
-
-  const handleChange = ({ nativeEvent }) => {
-    onChangeText(nativeEvent.text);
-  };
-
-  const handlePress = () => {
-    postNewAccount(accountName, token);
-    navigation.navigate('Accounts');
+export default function CreateNewAccountScreen({ postNewAccount, token, status }) {
+  const [accountName, setAccountName] = React.useState('');
+  const handleChange = (value) => {
+    setAccountName(value);
   };
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
-      <View style={{ flex: 0.5 }}>
-        <Text style={styles.text}>Name of deposit account</Text>
-      </View>
-      <View style={{ flex: 0.5 }}>
-        <Item style={{ margin: 10 }}>
+
+      <View style={{ flex: 0.5 }} />
+      <View style={{ flex: 0.5, alignItems: 'center' }}>
+        <Item style={{ margin: 10, width: '85%' }}>
           <Input
+            style={styles.inputAccount}
+            placeholder="Deposit account name"
             name="accountName"
-            onChange={handleChange}
+            onChangeText={handleChange}
             value={accountName}
           />
         </Item>
       </View>
-      <View style={{ flex: 6, flexDirection: 'column-reverse', alignItems: 'flex-end' }}>
-        <Button
-          style={buttonStyle.button}
-          onPress={handlePress}
-          iconLeft
-          rounded
-          warning
-        >
-          <Icon name="add" />
-          <Text>Create</Text>
-        </Button>
+      <View style={{
+        flex: 6, marginTop: 30, flexDirection: 'column', alignItems: 'flex-end',
+      }}
+      >
+        {status === 'done' ? <RenderGoBackButton /> : <CreateButton status={status} postNewAccount={postNewAccount} token={token} accountName={accountName} />}
       </View>
+
     </KeyboardAvoidingView>
   );
 }
 
 CreateNewAccountScreen.propTypes = {
-  navigation: navigationPropTypes.isRequired,
   token: PropTypes.string.isRequired,
   postNewAccount: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
 };

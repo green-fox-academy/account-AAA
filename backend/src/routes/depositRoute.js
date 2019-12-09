@@ -25,13 +25,14 @@ depositRoute.post('/', async (req, res) => {
     const { depositName } = req.body;
     const isNewAccountValid = !(await databaseActions.findAccount(depositName));
     if (isNewAccountValid) {
-      const inserted = await databaseActions.insertAccount(depositName, req.userId);
-      res.status(200).json({ id: inserted });
+      const insertedId = await databaseActions.insertAccount(depositName, req.userId);
+      const insertedAccount = await databaseActions.getAccountByDepositId(insertedId);
+      res.status(200).json(insertedAccount);
     } else {
-      res.status(422).send('Duplicate account name, please use another name');
+      res.status(422).send({ message: 'Duplicate account name, please use another name' });
     }
   } catch (error) {
-    res.status(500).send('Something went wrong, please try again later.');
+    res.status(500).send({ message: 'Something went wrong, please try again later.' });
   }
 });
 
@@ -40,7 +41,7 @@ depositRoute.get('/', async (req, res) => {
     const accounts = await databaseActions.getAccountsByUserId(req.userId);
     res.status(200).json(accounts);
   } catch (error) {
-    res.status(500).send('Something went wrong, please try again later.');
+    res.status(500).send({ message: 'Something went wrong, please try again later.' });
   }
 });
 
@@ -50,7 +51,7 @@ depositRoute.get('/:depositId', async (req, res) => {
     const accountsDetails = await databaseActions.getTransfers(depositId, req.userId);
     res.status(200).json(accountsDetails);
   } catch (error) {
-    res.status(500).send('Something went wrong, please try again later.');
+    res.status(500).send({ message: 'Something went wrong, please try again later.' });
   }
 });
 

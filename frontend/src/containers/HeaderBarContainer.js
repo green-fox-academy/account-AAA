@@ -6,6 +6,11 @@ const mapDispatchToProps = (dispatch) => ({
     type: 'UPDATE_DISPLAY',
     displayName,
   }),
+  createNewAccount: () => {
+    dispatch({
+      type: 'POST_NEW_ACCOUNT_START',
+    });
+  },
 });
 
 export default connect(null, mapDispatchToProps)(HeaderBar);
