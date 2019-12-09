@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import styles from '../styles/CreateNewDepositStyle';
 import RenderGoBackButton from '../components/renderGoBackButton';
-import RenderCreateButton from '../components/renderCreateButton';
+import CreateButton from '../components/CreateButton';
 
 export default function CreateNewAccountScreen({ postNewAccount, token, status }) {
   const [accountName, setAccountName] = React.useState('');
@@ -33,7 +33,7 @@ export default function CreateNewAccountScreen({ postNewAccount, token, status }
         flex: 6, marginTop: 30, flexDirection: 'column', alignItems: 'flex-end',
       }}
       >
-        {status === 'done' ? <RenderGoBackButton /> : <RenderCreateButton postNewAccount={postNewAccount} token={token} status={status} accountName={accountName} />}
+        {status === 'done' ? <RenderGoBackButton /> : <CreateButton status={status} postNewAccount={postNewAccount} token={token} accountName={accountName} />}
       </View>
 
     </KeyboardAvoidingView>
