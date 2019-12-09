@@ -10,10 +10,10 @@ export default function fetchAccountsAction(authToken) {
         },
       });
       const data = await result.json();
-      dispatch({
+      setTimeout(() => dispatch({
         type: 'FETCH_ACCOUNTS',
         accounts: data,
-      });
+      }), 2000);
     } catch (error) {
       dispatch({
         type: 'FETCH_ACCOUNT_ERROR',
