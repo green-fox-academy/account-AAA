@@ -24,7 +24,8 @@ export default function AccountsScreen({
 
   return (
     Object.keys(accounts).length > 0
-      ? <>
+      ? (
+        <>
           <View style={styles.filterView}>
             <Button
               style={styles.filterOption}
@@ -57,6 +58,7 @@ export default function AccountsScreen({
             ))}
           </Content>
         </>
+      )
       : <SpinningWheel content="Accounts" />
   );
 }
