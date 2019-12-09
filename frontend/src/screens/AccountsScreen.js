@@ -10,10 +10,7 @@ import SpinningWheel from '../components/SpinningWheel';
 export default function AccountsScreen({
   accounts, fetchAccounts, orderAccounts, token,
 }) {
-  React.useEffect(
-    () => { fetchAccounts(token); },
-    [],
-  );
+  React.useEffect(() => { fetchAccounts(token); }, []);
 
   const [filterState, setFilterState] = React.useState(false);
 

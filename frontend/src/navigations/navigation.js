@@ -8,8 +8,8 @@ import CreateNewAccountScreen from '../containers/CreateNewAccountScreenContaine
 import AccountDetailScreen from '../containers/AccountDetailScreenContainer';
 import ReceiveTransferScreen from '../containers/ReceiveTransferScreenContainer';
 import HeaderBar from '../containers/HeaderBarContainer';
-import TransferScreen from '../screens/TransferScreen';
-import InternalTransactionScreen from '../containers/InternalTransactionScreenContainer';
+import TransferScreen from '../containers/TransferScreenContainers/TransferScreenContainer';
+import InternalTransactionScreen from '../containers/TransferScreenContainers/InternalTransactionScreenContainer';
 import ExternalTransactionScreen from '../screens/ExternalTransactionScreen';
 import QRCodeScannerScreen from '../screens/QRCodeScannerScreen';
 

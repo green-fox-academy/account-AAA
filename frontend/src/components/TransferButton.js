@@ -1,12 +1,22 @@
 import React from 'react';
 import { Button, Text, View } from 'native-base';
 import { FontAwesome } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
 import buttonStyle from '../styles/BottomButtonStyle';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
-export default function TransferButton() {
+function TransferButton({ navigation }) {
+  const account = navigation.getParam('account');
+
   return (
     <View style={{ alignItems: 'flex-end' }}>
-      <Button style={buttonStyle.button} iconLeft rounded warning>
+      <Button
+        iconLeft
+        rounded
+        warning
+        style={buttonStyle.button}
+        onPress={() => navigation.navigate('Transfer', { account })}
+      >
         <FontAwesome
           name="dollar"
           style={buttonStyle.iconFont}
@@ -17,3 +27,9 @@ export default function TransferButton() {
     </View>
   );
 }
+
+TransferButton.propTypes = {
+  navigation: navigationPropTypes.isRequired,
+};
+
+export default withNavigation(TransferButton);

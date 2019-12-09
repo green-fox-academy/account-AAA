@@ -1,4 +1,3 @@
-
 const initState = {
   accounts: [],
   displayName: '',

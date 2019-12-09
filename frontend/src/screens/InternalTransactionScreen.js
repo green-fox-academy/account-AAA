@@ -7,23 +7,19 @@ import navigationPropTypes from '../helpers/navigationPropTypes';
 import DropDownAccountsList from '../containers/TransferScreenContainers/DropDownAccountsListContainer';
 import TransferAmountInput from '../containers/TransferScreenContainers/TransferAmountInputContainer';
 import TransferSendButton from '../containers/TransferScreenContainers/TransferSendButtonContainer';
+import newTransferPropTypes from '../helpers/newTransferPropTypes';
 
 export default function InternalTransactionScreen({
-  accounts, navigation, selection,
+  accounts, navigation, newTransfer,
 }) {
   const account = navigation.getParam('account');
   const filterAccounts = accounts.filter((ele) => ele.depositName !== account.depositName);
-
   return (
     <Content padder>
       <View>
         <Card>
           <CardItem>
-            <Text>
-              From:
-              {' '}
-              {account.depositName}
-            </Text>
+            <Text>{`From: ${account.depositName}`}</Text>
           </CardItem>
         </Card>
       </View>
@@ -33,7 +29,7 @@ export default function InternalTransactionScreen({
       </View>
 
       {
-        selection === '' ? null : (
+        !newTransfer.receiverId ? null : (
           <Content style={{ height: 500 }}>
             <TransferAmountInput />
             <View style={{
@@ -52,5 +48,5 @@ export default function InternalTransactionScreen({
 InternalTransactionScreen.propTypes = {
   navigation: navigationPropTypes.isRequired,
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selection: PropTypes.string.isRequired,
+  newTransfer: newTransferPropTypes.isRequired,
 };

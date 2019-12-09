@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 module.exports = function OAuth(req, res, next) {
   const authorizationHeader = req.headers.authorization;
   if (!authorizationHeader) {
-    res.status(415).send('Must include authorization info');
+    res.status(415).send({ msg: 'Must include authorization info' });
     return;
   }
 
   if (!authorizationHeader.startsWith('Bearer ')) {
-    res.status(415).send('Must use Bearer OAuth token!');
+    res.status(415).send({ msg: 'Must use Bearer OAuth token!' });
     return;
   }
 
@@ -19,6 +19,6 @@ module.exports = function OAuth(req, res, next) {
     req.userId = userId;
     next();
   } catch (error) {
-    res.status(401).send('Authorization failed');
+    res.status(401).send({ msg: 'Authorization failed' });
   }
 };
