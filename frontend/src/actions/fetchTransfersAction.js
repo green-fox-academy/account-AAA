@@ -10,10 +10,10 @@ export default function fetchTransfersAction(depositId, authToken) {
         },
       });
       const data = await result.json();
-      dispatch({
+      setTimeout(() => dispatch({
         type: 'FETCH_TRANSFERS',
         transfers: data,
-      });
+      }), 1000);
     } catch (error) {
       dispatch({
         type: 'FETCH_TRANSFERS_ERROR',

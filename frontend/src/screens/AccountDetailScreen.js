@@ -4,6 +4,7 @@ import AccountInfo from '../components/AccountInfo';
 import TransferHistory from '../components/TransferHistory';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import TransferButton from '../components/TransferButton';
+import SpinningWheel from '../components/SpinningWheel';
 
 export default function AccountDetailScreen({
   fetchTransfers, transfers, authToken, navigation,
@@ -12,11 +13,18 @@ export default function AccountDetailScreen({
   useEffect(() => {
     fetchTransfers(account.id, authToken);
   }, []);
+
   return (
     <>
       <AccountInfo account={account} />
-      <TransferHistory transfers={transfers} account={account} />
-      <TransferButton />
+      {Object.keys(transfers).length > 0
+        ? (
+          <>
+            <TransferHistory transfers={transfers} account={account} />
+            <TransferButton />
+          </>
+        )
+        : <SpinningWheel content="Transfer records" />}
     </>
   );
 }
