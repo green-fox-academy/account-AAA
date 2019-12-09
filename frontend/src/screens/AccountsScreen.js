@@ -15,8 +15,8 @@ export default function AccountsScreen({
 
   const [filterState, setFilterState] = React.useState(false);
 
-  const filterAccounts = (orderBy) => {
-    orderAccounts(`${orderBy} ${filterState ? 'Ascending' : 'Descending'}`);
+  const filterAccounts = (orderItem) => {
+    orderAccounts(orderItem, filterState ? 'Ascending' : 'Descending');
     setFilterState(!filterState);
   };
 
@@ -25,21 +25,21 @@ export default function AccountsScreen({
       <View style={styles.filterView}>
         <Button
           style={styles.filterOption}
-          onPress={() => filterAccounts('Account Name')}
+          onPress={() => filterAccounts('depositName')}
         >
-          <Text style={styles.textStyle}>Account Name</Text>
+          <Text style={styles.textStyle}>Name</Text>
           <Icon name="sort" type="FontAwesome" style={styles.sortIcon} />
         </Button>
         <Button
           style={styles.filterOption}
-          onPress={() => filterAccounts('Balance')}
+          onPress={() => filterAccounts('depositAmount')}
         >
           <Text style={styles.textStyle}>Balance</Text>
           <Icon name="sort" type="FontAwesome" style={styles.sortIcon} />
         </Button>
         <Button
           style={styles.filterOption}
-          onPress={() => filterAccounts('Created')}
+          onPress={() => filterAccounts('createdAt')}
         >
           <Text style={styles.textStyle}>Created</Text>
           <Icon name="sort" type="FontAwesome" style={styles.sortIcon} />

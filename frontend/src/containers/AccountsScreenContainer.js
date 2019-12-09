@@ -12,7 +12,7 @@ const mapStateToProps = ({ userReducer, accountsReducer }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAccounts: (token) => { dispatch(fetchAccountsAction(token)); },
-  orderAccounts: (orderBy) => { dispatch(orderAccountsAction(orderBy)); },
+  orderAccounts: (orderItem, order) => { dispatch(orderAccountsAction(orderItem, order)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountsScreen);

@@ -6,12 +6,8 @@ const initState = {
 };
 
 const orderResult = {
-  'Account Name Ascending': (accounts) => accounts.sort((a, b) => ((a.depositName < b.depositName) ? 1 : -1)),
-  'Account Name Descending': (accounts) => accounts.sort((a, b) => ((a.depositName > b.depositName) ? 1 : -1)),
-  'Balance Ascending': (accounts) => accounts.sort((a, b) => ((a.depositAmount < b.depositAmount) ? 1 : -1)),
-  'Balance Descending': (accounts) => accounts.sort((a, b) => ((a.depositAmount > b.depositAmount) ? 1 : -1)),
-  'Created Ascending': (accounts) => accounts.sort((a, b) => ((a.createdAt < b.createdAt) ? 1 : -1)),
-  'Created Descending': (accounts) => accounts.sort((a, b) => ((a.createdAt > b.createdAt) ? 1 : -1)),
+  Ascending: (accounts, orderItem) => accounts.sort((a, b) => (a[orderItem] < b[orderItem])),
+  Descending: (accounts, orderItem) => accounts.sort((a, b) => (a[orderItem] > b[orderItem])),
 };
 
 export default function accountsReducer(state = initState, action) {
@@ -45,7 +41,7 @@ export default function accountsReducer(state = initState, action) {
     case 'ORDER_CARDS':
       return {
         ...state,
-        accounts: orderResult[action.orderBy]([...state.accounts]),
+        accounts: orderResult[action.order]([...state.accounts], action.orderItem),
       };
     default:
       return state;

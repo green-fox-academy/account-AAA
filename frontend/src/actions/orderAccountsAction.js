@@ -1,6 +1,7 @@
-export default function orderAccountsAction(orderBy) {
+export default function orderAccountsAction(orderItem, order) {
   return {
     type: 'ORDER_CARDS',
-    orderBy,
+    orderItem,
+    order,
   };
 }
