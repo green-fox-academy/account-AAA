@@ -11,7 +11,7 @@ import HeaderBar from '../containers/HeaderBarContainer';
 import TransferScreen from '../screens/TransferScreen';
 import InternalTransactionScreen from '../containers/InternalTransactionScreenContainer';
 import ExternalTransactionScreen from '../screens/ExternalTransactionScreen';
-
+import QRCodeScannerScreen from '../screens/QRCodeScannerScreen';
 
 const RootStack = createStackNavigator(
   {
@@ -61,6 +61,12 @@ const RootStack = createStackNavigator(
       screen: ExternalTransactionScreen,
       navigationOptions: ({ navigation }) => ({
         header: <HeaderBar pageTitle="External Transaction" navigation={navigation} />,
+      }),
+    },
+    QRCodeScanner: {
+      screen: QRCodeScannerScreen,
+      navigationOptions: ({ navigation }) => ({
+        header: <HeaderBar pageTitle="Scanner" navigation={navigation} />,
       }),
     },
   },
