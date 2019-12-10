@@ -11,7 +11,7 @@ import HeaderBar from '../containers/HeaderBarContainer';
 import TransferScreen from '../containers/TransferScreenContainers/TransferScreenContainer';
 import InternalTransactionScreen from '../containers/TransferScreenContainers/InternalTransactionScreenContainer';
 import ExternalTransactionScreen from '../screens/ExternalTransactionScreen';
-import QRCodeScannerScreen from '../screens/QRCodeScannerScreen';
+import QRCodeScannerScreen from '../containers/TransferScreenContainers/QRCodeScannerContainer';
 
 const RootStack = createStackNavigator(
   {

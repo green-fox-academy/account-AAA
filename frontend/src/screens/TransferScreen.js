@@ -13,7 +13,7 @@ function TransferScreen({ setSender, navigation }) {
   return (
     <View style={styles.layout}>
       <TransferScreenLargeButton screenName="InternalTransaction" buttonName="BETWEEN YOUR ACCOUNTS" />
-      <TransferScreenLargeButton screenName="ExternalTransaction" buttonName="TO ANOTHER PERSON" />
+      <TransferScreenLargeButton screenName="QRCodeScanner" buttonName="TO ANOTHER PERSON" />
     </View>
   );
 }
