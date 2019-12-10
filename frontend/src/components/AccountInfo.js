@@ -1,5 +1,7 @@
 import React from 'react';
-import { CardItem, Text, Button, View } from 'native-base';
+import {
+  CardItem, Text, Button, View,
+} from 'native-base';
 import { TextInput } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Modal, {
@@ -23,7 +25,6 @@ export default function AccountInfo({ account }) {
   const handleChange = (text) => {
     setAccountName(text);
   };
- 
 
 
   return (
@@ -45,18 +46,18 @@ export default function AccountInfo({ account }) {
               slideFrom: 'bottom',
             })}
             modalTitle={<ModalTitle title="Edit your account name" />}
-            footer={
+            footer={(
               <ModalFooter>
                 <ModalButton
                   text="CANCEL"
-                  onPress={() => { setVisible(false) }}
+                  onPress={() => { setVisible(false); }}
                 />
                 <ModalButton
                   text="OK"
-                  onPress={() => { setVisible(false) }}
+                  onPress={() => { setVisible(false); }}
                 />
               </ModalFooter>
-            }
+            )}
           >
             <ModalContent>
               <TextInput
