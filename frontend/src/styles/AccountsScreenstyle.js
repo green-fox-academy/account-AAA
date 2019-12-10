@@ -19,4 +19,25 @@ export default StyleSheet.create({
     fontSize: 15,
     color: 'black',
   },
+  rowBack: {
+    paddingTop: 10,
+    paddingBottom: 4.5,
+    marginRight: 15,
+    alignItems: 'flex-end',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  deleteButton: {
+    height: '100%',
+    width: 70,
+    borderRadius: 0,
+    backgroundColor: 'lightgray',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  deleteIcon: {
+    fontSize: 40,
+    alignSelf: 'center',
+    color: 'black',
+  },
 });

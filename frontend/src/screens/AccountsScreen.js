@@ -1,4 +1,5 @@
 import React from 'react';
+import { SwipeListView } from 'react-native-swipe-list-view';
 import {
   Content, View, Button, Text, Icon,
 } from 'native-base';
@@ -8,7 +9,7 @@ import styles from '../styles/AccountsScreenstyle';
 import SpinningWheel from '../components/SpinningWheel';
 
 export default function AccountsScreen({
-  accounts, fetchAccounts, orderAccounts, token,
+  accounts, fetchAccounts, orderAccounts, deleteAccount, token,
 }) {
   React.useEffect(() => { fetchAccounts(token); }, []);
 
@@ -17,6 +18,14 @@ export default function AccountsScreen({
   const filterAccounts = (orderItem) => {
     orderAccounts(orderItem, filterState ? 'Ascending' : 'Descending');
     setFilterState(!filterState);
+  };
+
+  const handelDeletion = (depositId, depositAmount) => {
+    if (depositAmount > 0) {
+      alert('Please transfer out remaining balance before delete!');
+    } else {
+      deleteAccount(depositId, token);
+    }
   };
 
   return (
@@ -46,17 +55,37 @@ export default function AccountsScreen({
               <Icon name="sort" type="FontAwesome" style={styles.sortIcon} />
             </Button>
           </View>
+
           <Content>
-            {accounts.map((account) => (
-              <AccountCard
-                account={account}
-                key={account.id}
-              />
-            ))}
+            <SwipeListView
+              data={accounts}
+              renderItem={(data) => (
+                <AccountCard account={data.item} />
+              )}
+              renderHiddenItem={(data, rowMap) => (
+                <View style={styles.rowBack}>
+                  <Button
+                    style={styles.deleteButton}
+                    onPress={() => {
+                      handelDeletion(data.item.id, data.item.depositAmount);
+                      rowMap[data.item.id].closeRow();
+                    }}
+                  >
+                    <Icon name="trash" style={styles.deleteIcon} />
+                  </Button>
+                </View>
+              )}
+              keyExtractor={(item) => item.id.toString()}
+              leftOpenValue={0}
+              rightOpenValue={-70}
+              disableRightSwipe
+            />
+
           </Content>
         </>
       )
       : <SpinningWheel content="Accounts" />
+
   );
 }
 
@@ -65,4 +94,5 @@ AccountsScreen.propTypes = {
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchAccounts: PropTypes.func.isRequired,
   orderAccounts: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
 };

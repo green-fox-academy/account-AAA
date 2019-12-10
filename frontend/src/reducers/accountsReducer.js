@@ -37,6 +37,11 @@ export default function accountsReducer(state = initState, action) {
         ...state,
         status: 'pending',
       };
+    case 'DELETE_ACCOUNT_DONE':
+      return {
+        ...state,
+        accounts: state.accounts.filter((account) => account.id !== action.deleted),
+      };
     case 'ORDER_CARDS':
       return {
         ...state,

@@ -55,4 +55,14 @@ depositRoute.get('/:depositId', async (req, res) => {
   }
 });
 
+depositRoute.delete('/:depositId', async (req, res) => {
+  try {
+    const { depositId } = req.params;
+    await databaseActions.deleteAccount(depositId);
+    res.status(200).json({ depositId });
+  } catch (error) {
+    res.status(500).send({ message: 'Something went wrong, please try again later.' });
+  }
+});
+
 module.exports = depositRoute;

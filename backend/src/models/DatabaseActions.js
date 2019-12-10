@@ -25,6 +25,16 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // delete new account
+  async deleteAccount(depositId) {
+    try {
+      const deleteAccountQuery = 'DELETE FROM accounts WHERE id=?;';
+      await this.execQuery(deleteAccountQuery, [depositId]);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // find if an account already exist
   async findAccount(depositName) {
     try {
