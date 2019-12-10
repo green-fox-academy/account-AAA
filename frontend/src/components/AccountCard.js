@@ -13,6 +13,7 @@ export default function AccountCard({ account }) {
     </Card>
   );
 }
+
 AccountCard.propTypes = {
   account: accountPropTypes.isRequired,
 };
