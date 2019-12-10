@@ -14,7 +14,9 @@ const mapStateToProps = ({ userReducer, accountsReducer }) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchAccounts: (token) => { dispatch(fetchAccountsAction(token)); },
   orderAccounts: (orderItem, order) => { dispatch(orderAccountsAction(orderItem, order)); },
-  deleteAccount: (depositId, token) => { dispatch(deleteNewAccountAction(depositId, token)); },
+  deleteAccount: (depositId, userId, token) => {
+    dispatch(deleteNewAccountAction(depositId, userId, token));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountsScreen);

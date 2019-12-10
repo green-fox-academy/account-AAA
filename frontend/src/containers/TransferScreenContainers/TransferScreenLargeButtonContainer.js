@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TransferScreen from '../../screens/TransferScreen';
+import TransferScreenLargeButton from '../../components/TransferScreenComponents/TransferScreenLargeButton';
 import { setSenderAction } from '../../actions/newTransferAction';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -8,4 +8,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(TransferScreen);
+export default connect(null, mapDispatchToProps)(TransferScreenLargeButton);

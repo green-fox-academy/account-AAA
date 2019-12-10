@@ -9,13 +9,16 @@ import newTransferPropTypes from '../../helpers/newTransferPropTypes';
 function TransferSendButton({
   token, depositAmount, newTransfer, sendTransfer, navigation,
 }) {
+  const validateTransfer = () => !(newTransfer.transferAmount < depositAmount
+    && newTransfer.transferAmount > 0);
+
   return (
     <Button
-      style={buttonStyle.button}
       iconLeft
       rounded
       success
-      disabled={depositAmount < newTransfer.transferAmount || newTransfer.transferAmount === 0}
+      style={buttonStyle.button}
+      disabled={validateTransfer()}
       onPress={() => {
         sendTransfer(newTransfer, token);
         navigation.navigate('Accounts');

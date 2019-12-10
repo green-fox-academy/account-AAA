@@ -20,11 +20,11 @@ export default function AccountsScreen({
     setFilterState(!filterState);
   };
 
-  const handelDeletion = (depositId, depositAmount) => {
+  const handelDeletion = (depositId, userId, depositAmount) => {
     if (depositAmount > 0) {
       alert('Please transfer out remaining balance before delete!');
     } else {
-      deleteAccount(depositId, token);
+      deleteAccount(depositId, userId, token);
     }
   };
 
@@ -67,7 +67,7 @@ export default function AccountsScreen({
                   <Button
                     style={styles.deleteButton}
                     onPress={() => {
-                      handelDeletion(data.item.id, data.item.depositAmount);
+                      handelDeletion(data.item.id, data.item.userId, data.item.depositAmount);
                       rowMap[data.item.id].closeRow();
                     }}
                   >

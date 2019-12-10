@@ -1,15 +1,9 @@
 import React from 'react';
 import { View } from 'native-base';
-import PropTypes from 'prop-types';
-import { withNavigation } from 'react-navigation';
-import TransferScreenLargeButton from '../components/TransferScreenComponents/TransferScreenLargeButton';
+import TransferScreenLargeButton from '../containers/TransferScreenContainers/TransferScreenLargeButtonContainer';
 import styles from '../styles/TransferScreenStyle';
-import navigationPropTypes from '../helpers/navigationPropTypes';
 
-function TransferScreen({ setSender, navigation }) {
-  const account = navigation.getParam('account');
-  React.useEffect(() => setSender(account.id, account.userId), []);
-
+export default function TransferScreen() {
   return (
     <View style={styles.layout}>
       <TransferScreenLargeButton screenName="InternalTransaction" buttonName="BETWEEN YOUR ACCOUNTS" />
@@ -17,11 +11,3 @@ function TransferScreen({ setSender, navigation }) {
     </View>
   );
 }
-
-TransferScreen.propTypes = {
-  setSender: PropTypes.func.isRequired,
-  navigation: navigationPropTypes.isRequired,
-};
-
-
-export default withNavigation(TransferScreen);

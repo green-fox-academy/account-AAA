@@ -2,7 +2,6 @@ export default function newTransferReducer(state = { status: '' }, action) {
   switch (action.type) {
     case 'SET_SENDER':
       return {
-        ...state,
         senderDepositId: action.senderDepositId,
         senderId: action.senderId,
       };
@@ -21,7 +20,6 @@ export default function newTransferReducer(state = { status: '' }, action) {
       return {};
     case 'POST_NEW_TRANSFER_ERROR':
       return {
-        ...state,
         status: 'error',
         error: action.arr,
       };

@@ -38,11 +38,6 @@ function HeaderBar({
     navigation.navigate('NewAccount');
   };
 
-  const handleGoBack = (event) => {
-    event.preventDefault();
-    navigation.goBack();
-  };
-
   const noRightHeader = ['New Account', 'Receive transfer', 'Transfer Screen', 'Internal Transaction', 'External Transaction'];
   const renderRightHeader = () => {
     if (noRightHeader.includes(pageTitle)) {
@@ -75,7 +70,7 @@ function HeaderBar({
       <Left style={styles.headerLeft}>
         <Button
           transparent
-          onPress={handleGoBack}
+          onPress={() => navigation.goBack()}
         >
           <Icon name="arrow-back" style={styles.backIcon} />
         </Button>

@@ -91,8 +91,8 @@ module.exports = class DatabaseActions {
   // get all transfer records related to an account
   async getTransferRecords(depositId, userId) {
     try {
-      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? )'
-      + ' OR (toDepositId = ? AND toUserId = ? ) ;';
+      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? ) '
+      + ' OR (toDepositId = ? AND toUserId = ? )  ORDER BY timeOfTransfer DESC;';
       const queryResult = await this.execQuery(findAccountDetailsQuery,
         [depositId, userId, depositId, userId]);
       return queryResult;
