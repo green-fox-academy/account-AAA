@@ -21,9 +21,7 @@ export default function ExternalTransactionScreen({
           </CardItem>
         </Card>
       </View>
-
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
-
         <View style={{ flex: 1 }}>
           <TransferAmountInput />
         </View>

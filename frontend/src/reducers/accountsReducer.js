@@ -2,6 +2,7 @@ const initState = {
   accounts: [],
   displayName: '',
   status: 'pending',
+  refreshing: false,
 };
 
 const orderResult = {
@@ -11,6 +12,16 @@ const orderResult = {
 
 export default function accountsReducer(state = initState, action) {
   switch (action.type) {
+    case 'REFRESH_START':
+      return {
+        ...state,
+        refreshing: true,
+      };
+    case 'REFRESH_DONE':
+      return {
+        ...state,
+        refreshing: false,
+      };
     case 'FETCH_ACCOUNTS':
       return {
         ...state,

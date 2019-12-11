@@ -3,13 +3,14 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import {
   Content, View, Button, Text, Icon,
 } from 'native-base';
+import { RefreshControl } from 'react-native';
 import PropTypes from 'prop-types';
 import AccountCard from '../components/AccountCard';
 import styles from '../styles/AccountsScreenstyle';
 import SpinningWheel from '../components/SpinningWheel';
 
 export default function AccountsScreen({
-  accounts, fetchAccounts, orderAccounts, deleteAccount, token,
+  accounts, refreshing, fetchAccounts, orderAccounts, deleteAccount, token,
 }) {
   React.useEffect(() => { fetchAccounts(token); }, []);
 
@@ -26,6 +27,10 @@ export default function AccountsScreen({
     } else {
       deleteAccount(depositId, userId, token);
     }
+  };
+
+  const refresh = () => {
+    fetchAccounts(token);
   };
 
   return (
@@ -56,7 +61,15 @@ export default function AccountsScreen({
             </Button>
           </View>
 
-          <Content>
+          <Content
+            refreshControl={(
+              <RefreshControl
+                onRefresh={refresh}
+                refreshing={refreshing}
+                progressBackgroundColor="#fff"
+              />
+            )}
+          >
             <SwipeListView
               data={accounts}
               renderItem={(data) => (
@@ -80,12 +93,10 @@ export default function AccountsScreen({
               rightOpenValue={-70}
               disableRightSwipe
             />
-
           </Content>
         </>
       )
       : <SpinningWheel content="Accounts" />
-
   );
 }
 
@@ -95,4 +106,5 @@ AccountsScreen.propTypes = {
   fetchAccounts: PropTypes.func.isRequired,
   orderAccounts: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  refreshing: PropTypes.bool.isRequired,
 };

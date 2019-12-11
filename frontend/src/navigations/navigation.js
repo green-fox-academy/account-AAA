@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from '../screens/HomeScreen';
 import AccountsScreen from '../containers/AccountsScreenContainer';
 import CreateNewAccountScreen from '../containers/CreateNewAccountScreenContainer';
-import AccountDetailScreen from '../containers/AccountDetailScreenContainer';
+import AccountDetailScreen from '../screens/AccountDetailScreen';
 import ReceiveTransferScreen from '../containers/ReceiveTransferScreenContainer';
 import HeaderBar from '../containers/HeaderBarContainer';
 import TransferScreen from '../screens/TransferScreen';

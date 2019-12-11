@@ -9,6 +9,7 @@ const mapStateToProps = ({ userReducer, accountsReducer }) => ({
   accounts: accountsReducer.accounts.filter((account) => (
     account.depositName.includes(accountsReducer.displayName)
   )),
+  refreshing: accountsReducer.refreshing,
 });
 
 const mapDispatchToProps = (dispatch) => ({
