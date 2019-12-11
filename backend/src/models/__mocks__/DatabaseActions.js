@@ -1,5 +1,6 @@
 const DatabaseActions = jest.fn().mockImplementation(() => ({
   insertAccount: () => 1,
+  getAccountByDepositId: (id) => ({ id }),
   findAccount: (accountName) => ['Main Account', 'Saving Account', 'Investment Account'].includes(accountName),
   getAccountsByUserId: () => [
     {
@@ -47,7 +48,6 @@ const DatabaseActions = jest.fn().mockImplementation(() => ({
       nameToUse: 'Arthur Shao',
     },
   ],
-
 }));
 
 module.exports = DatabaseActions;
