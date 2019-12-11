@@ -91,25 +91,30 @@ exports[`<DropDownAccountsList /> render correctly 1`] = `
       >
         <Text
           ellipsizeMode="tail"
+          note={true}
           numberOfLines={1}
           style={
             Array [
               Object {
                 "backgroundColor": "transparent",
-                "color": "#000",
+                "color": "#a7a7a7",
                 "fontFamily": "System",
-                "fontSize": 16.5,
+                "fontSize": 16,
+                "lineHeight": null,
                 "marginLeft": 0,
                 "marginRight": 0,
                 "paddingLeft": 16,
                 "paddingRight": 16,
               },
               undefined,
+              Object {
+                "color": "#bfc6ea",
+              },
             ]
           }
           uppercase={false}
         >
-          Main Account
+          Select Your Account
         </Text>
         <Text />
       </View>
@@ -323,7 +328,7 @@ exports[`<DropDownAccountsList /> render correctly 1`] = `
                   <View
                     button={true}
                     onPress={[Function]}
-                    selected={true}
+                    selected={false}
                     style={
                       Object {
                         "alignItems": "center",
@@ -352,7 +357,7 @@ exports[`<DropDownAccountsList /> render correctly 1`] = `
                         style={
                           Object {
                             "alignSelf": "center",
-                            "color": "#007aff",
+                            "color": "#000",
                             "fontFamily": "System",
                             "fontSize": 16,
                           }
@@ -390,9 +395,7 @@ exports[`<DropDownAccountsList /> render correctly 1`] = `
                             "opacity": 1,
                           }
                         }
-                      >
-                        <Text />
-                      </View>
+                      />
                     </View>
                   </View>
                 </View>
