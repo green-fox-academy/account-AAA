@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import AccountDetailScreen from '../screens/AccountDetailScreen';
 import fetchTransfersAction from '../actions/fetchTransfersAction';
 
-const mapStateToProps = ({ transfersReducer, userReducer }) => ({
-  transfers: transfersReducer,
+const mapStateToProps = ({ transfersHistoryReducer, userReducer }) => ({
+  transfers: transfersHistoryReducer,
   authToken: userReducer.user.token,
 });
 

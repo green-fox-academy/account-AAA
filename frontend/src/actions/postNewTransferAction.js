@@ -1,31 +1,30 @@
 import config from '../config';
+import fetchAccountsAction from './fetchAccountsAction';
 
-export default function postNewAccountAction(accountName, authToken) {
+export default function postNewTransferAction(newTransfer, authToken) {
   return async function (dispatch) {
     try {
-      dispatch({
-        type: 'POST_NEW_ACCOUNT_START',
-      });
-      const response = await fetch(`http://${config.serverAddress}:${config.port}/deposit`, {
+      const response = await fetch(`http://${config.serverAddress}:${config.port}/deposit/transfer`, {
         method: 'POST',
         headers: {
           authorization: `Bearer ${authToken}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ depositName: accountName }),
+        body: JSON.stringify(newTransfer),
       });
+
       const responseBody = await response.json();
       if (response.status === 200) {
+        dispatch(fetchAccountsAction(authToken));
         dispatch({
-          type: 'POST_NEW_ACCOUNT_DONE',
-          account: responseBody,
+          type: 'POST_NEW_TRANSFER_SUCCESS',
         });
       } else {
         throw responseBody;
       }
     } catch (responseBody) {
       dispatch({
-        type: 'POST_NEW_ACCOUNT_ERROR',
+        type: 'POST_NEW_TRANSFER_ERROR',
         err: responseBody.message,
       });
     }

@@ -9,7 +9,8 @@ export default function DropDownAccountsList({ accounts, transferAccountSelectio
 
   const onValueChange = (value) => {
     setSelected(value);
-    transferAccountSelection(value);
+    const selectedAccount = accounts.filter((account) => account.depositName === value)[0];
+    transferAccountSelection(selectedAccount.id, selectedAccount.userId);
   };
 
   return (

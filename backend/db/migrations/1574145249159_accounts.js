@@ -1,7 +1,7 @@
 module.exports = {
   up: 'INSERT INTO accounts(depositName, depositAmount, userId) '
     + 'VALUES '
-    + '("Main Account", 300, 123), '
+    + '("Main Account", 0, 123), '
     + '("Saving Account", 80050, 123), '
     + '("Investment Account", 10000, 123), '
     + '("Travel Account", 10, 123), '

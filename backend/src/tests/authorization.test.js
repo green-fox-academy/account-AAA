@@ -12,7 +12,7 @@ describe('test OAuth middleware', () => {
     const res = mockResponse();
     OAuth(req, res, next);
     expect(res.statusCode).toEqual(415);
-    expect(res.body).toEqual('Must include authorization info');
+    expect(res.body.msg).toEqual('Must include authorization info');
   });
 
   it('should fail the auth for wrong token starts', () => {
@@ -20,7 +20,7 @@ describe('test OAuth middleware', () => {
     const res = mockResponse();
     OAuth(req, res, next);
     expect(res.statusCode).toEqual(415);
-    expect(res.body).toEqual('Must use Bearer OAuth token!');
+    expect(res.body.msg).toEqual('Must use Bearer OAuth token!');
   });
 
   it('should fail the auth for invalid token', () => {
@@ -28,7 +28,7 @@ describe('test OAuth middleware', () => {
     const res = mockResponse();
     OAuth(req, res, next);
     expect(res.statusCode).toEqual(401);
-    expect(res.body).toEqual('Authorization failed');
+    expect(res.body.msg).toEqual('Authorization failed');
   });
 
   it('should pass the auth', () => {

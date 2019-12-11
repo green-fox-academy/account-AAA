@@ -9,9 +9,9 @@ import AccountDetailScreen from '../containers/AccountDetailScreenContainer';
 import ReceiveTransferScreen from '../containers/ReceiveTransferScreenContainer';
 import HeaderBar from '../containers/HeaderBarContainer';
 import TransferScreen from '../screens/TransferScreen';
-import InternalTransactionScreen from '../containers/InternalTransactionScreenContainer';
+import InternalTransactionScreen from '../containers/TransferScreenContainers/InternalTransactionScreenContainer';
 import ExternalTransactionScreen from '../screens/ExternalTransactionScreen';
-import QRCodeScannerScreen from '../screens/QRCodeScannerScreen';
+import QRCodeScannerScreen from '../containers/TransferScreenContainers/QRCodeScannerContainer';
 
 const RootStack = createStackNavigator(
   {

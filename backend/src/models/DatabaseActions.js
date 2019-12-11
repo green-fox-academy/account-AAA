@@ -25,6 +25,16 @@ module.exports = class DatabaseActions {
     }
   }
 
+  // delete new account
+  async deleteAccount(depositId) {
+    try {
+      const deleteAccountQuery = 'DELETE FROM accounts WHERE id=?;';
+      await this.execQuery(deleteAccountQuery, [depositId]);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // find if an account already exist
   async findAccount(depositName) {
     try {
@@ -81,8 +91,8 @@ module.exports = class DatabaseActions {
   // get all transfer records related to an account
   async getTransferRecords(depositId, userId) {
     try {
-      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? )'
-      + ' OR (toDepositId = ? AND toUserId = ? ) ;';
+      const findAccountDetailsQuery = 'SELECT * FROM transferDetails WHERE (fromDepositId = ? AND fromUserId = ? ) '
+      + ' OR (toDepositId = ? AND toUserId = ? )  ORDER BY timeOfTransfer DESC;';
       const queryResult = await this.execQuery(findAccountDetailsQuery,
         [depositId, userId, depositId, userId]);
       return queryResult;

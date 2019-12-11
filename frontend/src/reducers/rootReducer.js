@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
-import accountsReducer from './accountsReducer';
-import transfersReducer from './transfersReducer';
 import userReducer from './userReducer';
-import transferAccountReducer from './transferAccountReducer';
+import accountsReducer from './accountsReducer';
+import transfersHistoryReducer from './transfersHistoryReducer';
+import newTransferReducer from './newTransferReducer';
 
 const rootReducer = combineReducers({
   userReducer,
   accountsReducer,
-  transfersReducer,
-  transferAccountReducer,
+  transfersHistoryReducer,
+  newTransferReducer,
 });
 
 export default rootReducer;

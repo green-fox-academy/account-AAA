@@ -13,7 +13,7 @@ export default function fetchTransfersAction(depositId, authToken) {
       setTimeout(() => dispatch({
         type: 'FETCH_TRANSFERS',
         transfers: data,
-      }), 1000);
+      }), 500);
     } catch (error) {
       dispatch({
         type: 'FETCH_TRANSFERS_ERROR',

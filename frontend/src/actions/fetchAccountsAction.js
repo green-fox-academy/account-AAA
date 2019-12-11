@@ -13,7 +13,7 @@ export default function fetchAccountsAction(authToken) {
       setTimeout(() => dispatch({
         type: 'FETCH_ACCOUNTS',
         accounts: data,
-      }), 2000);
+      }), 500);
     } catch (error) {
       dispatch({
         type: 'FETCH_ACCOUNT_ERROR',

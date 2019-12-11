@@ -3,20 +3,26 @@ import { Button, Text, View } from 'react-native';
 import { Grid, Row } from 'react-native-easy-grid';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { withNavigation } from 'react-navigation';
+import PropTypes from 'prop-types';
 import styles from '../styles/QRCodeScannerScreenStyle';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
-export default function QRCodeScannerScreen() {
+function QRCodeScannerScreen({ setReceiver, navigation }) {
   const [hasCameraPermission, setHasCameraPermission] = React.useState(null);
   const [scanned, setScanned] = React.useState(false);
+  const account = navigation.getParam('account');
 
   const getPermissionsAsync = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     setHasCameraPermission(status === 'granted');
   };
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    const scannedResult = JSON.parse(data);
+    setReceiver(scannedResult.depositId, scannedResult.userId);
+    navigation.navigate('ExternalTransaction', { account });
   };
 
   React.useEffect(() => {
@@ -41,7 +47,7 @@ export default function QRCodeScannerScreen() {
       }}
     >
       <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        onBarCodeScanned={scanned ? null : handleBarCodeScanned}
         style={styles.barcodeScanner}
       >
         <Grid>
@@ -56,9 +62,16 @@ export default function QRCodeScannerScreen() {
       </BarCodeScanner>
       {
         scanned && (
-          <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />
+          <Button title="Tap to Scan Again" onPress={() => setScanned(false)} style={{ marginButtom: 30 }} />
         )
       }
     </View>
   );
 }
+
+QRCodeScannerScreen.propTypes = {
+  navigation: navigationPropTypes.isRequired,
+  setReceiver: PropTypes.func.isRequired,
+};
+
+export default withNavigation(QRCodeScannerScreen);

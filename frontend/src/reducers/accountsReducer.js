@@ -1,4 +1,3 @@
-
 const initState = {
   accounts: [],
   displayName: '',
@@ -37,6 +36,11 @@ export default function accountsReducer(state = initState, action) {
       return {
         ...state,
         status: 'pending',
+      };
+    case 'DELETE_ACCOUNT_DONE':
+      return {
+        ...state,
+        accounts: state.accounts.filter((account) => account.id !== action.deleted),
       };
     case 'ORDER_CARDS':
       return {

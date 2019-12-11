@@ -26,7 +26,8 @@
       "import/no-unresolved": "off",
       "func-names": "off",
       "class-methods-use-this": "off",
-      "no-alert": "off"
+      "no-alert": "off",
+      "radix": "off"
     },
     "root": true
 }
