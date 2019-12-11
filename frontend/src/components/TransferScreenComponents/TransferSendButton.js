@@ -9,7 +9,7 @@ import newTransferPropTypes from '../../helpers/newTransferPropTypes';
 function TransferSendButton({
   token, depositAmount, newTransfer, sendTransfer, navigation,
 }) {
-  const validateTransfer = () => !(newTransfer.transferAmount < depositAmount
+  const validateTransfer = () => !(newTransfer.transferAmount <= depositAmount
     && newTransfer.transferAmount > 0);
 
   return (

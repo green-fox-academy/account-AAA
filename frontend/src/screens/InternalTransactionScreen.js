@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View, Text, Card, CardItem, Content,
 } from 'native-base';
+import { KeyboardAvoidingView } from 'react-native';
 import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import DropDownAccountsList from '../containers/TransferScreenContainers/DropDownAccountsListContainer';
@@ -30,15 +31,15 @@ export default function InternalTransactionScreen({
 
       {
         !newTransfer.receiverId ? null : (
-          <Content style={{ height: 500 }}>
+          <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
             <TransferAmountInput />
             <View style={{
-              height: '90%', alignItems: 'flex-end', marginTop: '70%',
+              height: '90%', alignItems: 'flex-end',
             }}
             >
               <TransferSendButton depositAmount={account.depositAmount} />
             </View>
-          </Content>
+          </KeyboardAvoidingView>
         )
       }
     </Content>

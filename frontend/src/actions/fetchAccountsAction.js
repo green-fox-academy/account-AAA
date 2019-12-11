@@ -2,6 +2,7 @@ import config from '../config';
 
 export default function fetchAccountsAction(authToken) {
   return async function (dispatch) {
+    dispatch({ type: 'REFRESH_START' });
     try {
       const result = await fetch(`http://${config.serverAddress}:${config.port}/deposit`, {
         method: 'GET',
@@ -10,10 +11,14 @@ export default function fetchAccountsAction(authToken) {
         },
       });
       const data = await result.json();
-      setTimeout(() => dispatch({
+      dispatch({
         type: 'FETCH_ACCOUNTS',
         accounts: data,
-      }), 500);
+      });
+      setTimeout(
+        () => dispatch({ type: 'REFRESH_DONE' }),
+        500,
+      );
     } catch (error) {
       dispatch({
         type: 'FETCH_ACCOUNT_ERROR',
