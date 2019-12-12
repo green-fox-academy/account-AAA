@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Content, Text } from 'native-base';
+import { Content, Text, View } from 'native-base';
 import PropTypes from 'prop-types';
 import { RefreshControl } from 'react-native';
 import accountPropTypes from '../helpers/accountPropTypes';
@@ -13,9 +13,21 @@ export default function TransferHistory({
     fetchTransfers(account.id, authToken);
   }, []);
 
+  const sumTotal = (direction) => transfers.reduce(
+    ((sum, transfer) => sum + (transfer.direction === direction ? transfer.transferAmount : 0)), 0,
+  );
+
   return (
     <>
-      <Text style={styles.historyTag}>History</Text>
+      <Text style={styles.historyTag}>Transaction History</Text>
+      <View style={styles.summary}>
+        <Text style={styles.summaryText}>
+          {`Income: $ ${sumTotal('from')}`}
+        </Text>
+        <Text style={styles.summaryText}>
+          {`Expense: $ ${sumTotal('to')}`}
+        </Text>
+      </View>
       <Content
         refreshControl={(
           <RefreshControl
@@ -30,9 +42,9 @@ export default function TransferHistory({
         {transfers.length > 0
           ? (transfers.map((transfer) => (
             <TransferRecord
+              key={transfer.transferId}
               transfer={transfer}
               account={account}
-              key={transfer.transferId}
             />
           ))
           )

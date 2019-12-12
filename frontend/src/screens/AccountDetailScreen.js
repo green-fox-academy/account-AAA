@@ -1,16 +1,14 @@
 import React from 'react';
-import AccountInfo from '../components/AccountInfo';
 import TransferHistory from '../containers/TransferHistoryContainer';
 import navigationPropTypes from '../helpers/navigationPropTypes';
-import TransferButton from '../components/TransferButton';
+import AccountCard from '../components/AccountCard';
 
 export default function AccountDetailScreen({ navigation }) {
   const account = navigation.getParam('account');
   return (
     <>
-      <AccountInfo account={account} />
+      <AccountCard account={account} />
       <TransferHistory account={account} />
-      <TransferButton />
     </>
   );
 }

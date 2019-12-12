@@ -1,9 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  historyTag: {
+  summary: {
+    marginTop: 10,
     marginLeft: 20,
-    marginTop: 20,
+    flexDirection: 'row',
+  },
+  summaryText: {
+    width: '50%',
+    color: '#cccccc',
+    fontSize: 17,
+  },
+  historyTag: {
+    marginTop: 15,
+    marginLeft: 20,
     fontSize: 20,
   },
 });

@@ -20,7 +20,7 @@ export default function InternalTransactionScreen({
       <View>
         <Card>
           <CardItem>
-            <Text>{`From: ${account.depositName}`}</Text>
+            <Text>{`From: ${account.depositName} - $${account.depositAmount} available`}</Text>
           </CardItem>
         </Card>
       </View>

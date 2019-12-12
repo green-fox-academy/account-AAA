@@ -9,7 +9,7 @@ export default function HomeScreen({ navigation }) {
       style={{ alignSelf: 'center', marginTop: 100 }}
       onPress={() => navigation.navigate('Accounts')}
     >
-      <Text>Accounts</Text>
+      <Text>Deposit</Text>
     </Button>
   );
 }

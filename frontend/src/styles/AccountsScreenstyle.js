@@ -22,7 +22,8 @@ export default StyleSheet.create({
   rowBack: {
     paddingTop: 10,
     paddingBottom: 4.5,
-    marginRight: 15,
+    marginRight: 20,
+    borderRadius: 20,
     alignItems: 'flex-end',
     flexDirection: 'column',
     justifyContent: 'flex-end',
@@ -30,7 +31,7 @@ export default StyleSheet.create({
   deleteButton: {
     height: '100%',
     width: 70,
-    borderRadius: 0,
+    borderRadius: 15,
     backgroundColor: 'lightgray',
     justifyContent: 'center',
     alignItems: 'center',

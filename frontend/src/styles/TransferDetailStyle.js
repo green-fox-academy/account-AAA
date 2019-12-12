@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   transfer: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 20,
     marginTop: 20,
     alignItems: 'center',
   },
