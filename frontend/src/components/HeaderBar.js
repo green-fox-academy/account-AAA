@@ -38,7 +38,7 @@ function HeaderBar({
     navigation.navigate('NewAccount');
   };
 
-  const noRightHeader = ['New Account', 'Receive transfer', 'Transfer Screen', 'Internal Transaction', 'External Transaction'];
+  const noRightHeader = ['New Account', 'Receive transfer', 'Make a Transfer', 'Internal Transaction', 'External Transaction', 'Details'];
   const renderRightHeader = () => {
     if (noRightHeader.includes(pageTitle)) {
       return null;

@@ -6,7 +6,7 @@ module.exports = class DatabaseActions {
   // find all acounts of a user
   async getAccountsByUserId(userId) {
     try {
-      const getAccountsByUserIdQuery = 'SELECT * FROM accounts WHERE userId = ?;';
+      const getAccountsByUserIdQuery = 'SELECT * FROM accounts WHERE userId = ? ORDER BY id DESC;';
       const queryResult = await this.execQuery(getAccountsByUserIdQuery, [userId]);
       return queryResult;
     } catch (error) {

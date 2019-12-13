@@ -31,8 +31,8 @@ export default function AccountsScreen({
         'Delete Deposit Account',
         `\n${depositName}`,
         [
-          { text: 'DELETE', onPress: () => deleteAccount(id, userId, token) },
-          { text: 'CANCEL', onPress: () => {} },
+          { text: 'Delete', onPress: () => deleteAccount(id, userId, token) },
+          { text: 'Cancel', onPress: () => {} },
         ],
       );
     }

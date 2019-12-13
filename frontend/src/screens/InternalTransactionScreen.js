@@ -32,7 +32,7 @@ export default function InternalTransactionScreen({
       {
         !newTransfer.receiverId ? null : (
           <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
-            <TransferAmountInput />
+            <TransferAmountInput depositAmount={account.depositAmount} />
             <View style={{
               height: '90%', alignItems: 'flex-end',
             }}

@@ -11,11 +11,11 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 const transferIcon = {
-  to: {
+  from: {
     iconName: 'trending-up',
     iconColor: 'red',
   },
-  from: {
+  to: {
     iconName: 'trending-down',
     iconColor: 'green',
   },

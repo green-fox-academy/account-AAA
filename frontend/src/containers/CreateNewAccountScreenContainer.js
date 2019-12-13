@@ -5,7 +5,7 @@ import CreateNewAccountScreen from '../screens/CreateNewAccountScreen';
 const mapStateToProps = ({ userReducer, accountsReducer }) => ({
   token: userReducer.user.token,
   status: accountsReducer.status,
-
+  accountsList: accountsReducer.accounts.map((account) => account.depositName),
 });
 
 const mapDispatchToProps = (dispatch) => ({

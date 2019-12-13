@@ -48,7 +48,7 @@ const RootStack = createStackNavigator(
     Transfer: {
       screen: TransferScreen,
       navigationOptions: ({ navigation }) => ({
-        header: <HeaderBar pageTitle="Transfer Screen" navigation={navigation} />,
+        header: <HeaderBar pageTitle="Make a Transfer" navigation={navigation} />,
       }),
     },
     InternalTransaction: {

@@ -23,7 +23,7 @@ export default function ExternalTransactionScreen({
       </View>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
         <View style={{ flex: 1 }}>
-          <TransferAmountInput />
+          <TransferAmountInput depositAmount={account.depositAmount} />
         </View>
         <View style={{ flex: 3, alignItems: 'flex-end' }}>
           <TransferSendButton depositAmount={account.depositAmount} />

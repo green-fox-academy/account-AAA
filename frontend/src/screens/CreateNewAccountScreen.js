@@ -1,39 +1,70 @@
 import React from 'react';
-import { View, KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView, Alert } from 'react-native';
 import {
-  Item, Input,
+  Item, Input, Text, Button, Icon, View,
 } from 'native-base';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 import styles from '../styles/CreateNewDepositStyle';
-import RenderGoBackButton from '../components/renderGoBackButton';
-import CreateButton from '../components/CreateButton';
+import navigationPropTypes from '../helpers/navigationPropTypes';
 
-export default function CreateNewAccountScreen({ postNewAccount, token, status }) {
+function CreateNewAccountScreen({
+  postNewAccount, token, accountsList, navigation,
+}) {
   const [accountName, setAccountName] = React.useState('');
-  const handleChange = (value) => {
-    setAccountName(value);
+
+  const actionOnSure = () => {
+    postNewAccount(accountName, token);
+    setAccountName('');
+    Alert.alert(
+      `Account ${accountName} Created!`,
+      '',
+      [
+        { text: 'Create Another', onPress: () => {} },
+        { text: 'Done', onPress: () => { navigation.navigate('Accounts'); } },
+      ],
+    );
+  };
+  const handlePress = () => {
+    Alert.alert(
+      'Sure to create Account: ',
+      `\n${accountName} ?`,
+      [
+        { text: 'Sure', onPress: actionOnSure },
+        { text: 'Cancel', onPress: () => {} },
+      ],
+    );
   };
 
-  return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
 
-      <View style={{ flex: 0.5 }} />
-      <View style={{ flex: 0.5, alignItems: 'center' }}>
-        <Item style={{ margin: 10, width: '85%' }}>
+  return (
+    <KeyboardAvoidingView behavior="padding" enabled style={styles.inputView}>
+      <View style={styles.inputAccount}>
+        <Item>
           <Input
-            style={styles.inputAccount}
-            placeholder="Deposit account name"
             name="accountName"
-            onChangeText={handleChange}
             value={accountName}
+            placeholder="Deposit account name"
+            onChangeText={(text) => setAccountName(text)}
           />
         </Item>
+        {accountsList.includes(accountName) && accountName !== ''
+          ? <Text style={{ color: 'red', fontSize: 15 }}>* Name already taken!</Text>
+          : <></>}
       </View>
-      <View style={{
-        flex: 6, marginTop: 30, flexDirection: 'column', alignItems: 'flex-end',
-      }}
-      >
-        {status === 'done' ? <RenderGoBackButton /> : <CreateButton status={status} postNewAccount={postNewAccount} token={token} accountName={accountName} />}
+
+      <View style={styles.actionView}>
+        <Button
+          iconLeft
+          rounded
+          success
+          style={styles.createButton}
+          onPress={handlePress}
+          disabled={accountsList.includes(accountName) || accountName === ''}
+        >
+          <Icon name="add" />
+          <Text style={{ color: 'white' }}>Create</Text>
+        </Button>
       </View>
 
     </KeyboardAvoidingView>
@@ -43,5 +74,8 @@ export default function CreateNewAccountScreen({ postNewAccount, token, status }
 CreateNewAccountScreen.propTypes = {
   token: PropTypes.string.isRequired,
   postNewAccount: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
+  accountsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  navigation: navigationPropTypes.isRequired,
 };
+
+export default withNavigation(CreateNewAccountScreen);

@@ -1,7 +1,22 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  text: {
+  inputView: {
+    flex: 1,
+    marginTop: 70,
+  },
+  inputAccount: {
+    marginLeft: 20,
+    width: '90%',
+    color: '#FFA500',
+  },
+  actionView: {
+    flex: 6,
+    marginTop: 30,
+    marginRight: 20,
+    alignItems: 'flex-end',
+  },
+  createButton: {
     fontSize: 25,
     shadowColor: '#FFD39B',
     shadowOffset: { width: 0, height: 2 },
@@ -11,10 +26,4 @@ export default StyleSheet.create({
     marginTop: 10,
     color: '#FFA500',
   },
-  inputAccount: {
-    marginLeft: 20,
-    width: '80%',
-    color: '#FFA500',
-  },
-
 });
