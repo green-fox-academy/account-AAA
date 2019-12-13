@@ -13,5 +13,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
     marginBottom: 40,
+    backgroundColor: '#263852',
   },
 });
