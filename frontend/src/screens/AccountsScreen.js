@@ -3,7 +3,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import {
   Content, View, Button, Text, Icon,
 } from 'native-base';
-import { RefreshControl } from 'react-native';
+import { RefreshControl, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import AccountCard from '../components/AccountCard';
 import styles from '../styles/AccountsScreenstyle';
@@ -21,11 +21,20 @@ export default function AccountsScreen({
     setFilterState(!filterState);
   };
 
-  const handelDeletion = (depositId, userId, depositAmount) => {
+  const handelDeletion = ({
+    id, depositName, userId, depositAmount,
+  }) => {
     if (depositAmount > 0) {
       alert('Please transfer out remaining balance before delete!');
     } else {
-      deleteAccount(depositId, userId, token);
+      Alert.alert(
+        'DELETE',
+        `Sure you wannt to delete account: ${depositName}?`,
+        [
+          { text: 'DELETE', onPress: () => deleteAccount(id, userId, token) },
+          { text: 'CANCEL', onPress: () => {} },
+        ],
+      );
     }
   };
 
@@ -80,7 +89,7 @@ export default function AccountsScreen({
                   <Button
                     style={styles.deleteButton}
                     onPress={() => {
-                      handelDeletion(data.item.id, data.item.userId, data.item.depositAmount);
+                      handelDeletion(data.item);
                       rowMap[data.item.id].closeRow();
                     }}
                   >
