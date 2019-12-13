@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScanButton /> render correctly 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#62B1F6",
+      "borderBottomWidth": null,
+      "borderColor": "#007aff",
+      "borderLeftWidth": null,
+      "borderRadius": 5,
+      "borderRightWidth": null,
+      "borderTopWidth": null,
+      "borderWidth": undefined,
+      "color": "white",
+      "elevation": 2,
+      "flexDirection": "row",
+      "height": 45,
+      "justifyContent": "space-around",
+      "marginBottom": 50,
+      "marginRight": 30,
+      "opacity": 1,
+      "paddingBottom": 6,
+      "paddingTop": 6,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.8,
+      "shadowRadius": 2,
+      "width": 120,
+    }
+  }
+>
+  <Text />
+  <Text
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "color": "#fff",
+        "fontFamily": "System",
+        "fontSize": 16.5,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+    uppercase={false}
+  >
+    Scan
+  </Text>
+</View>
+`;
