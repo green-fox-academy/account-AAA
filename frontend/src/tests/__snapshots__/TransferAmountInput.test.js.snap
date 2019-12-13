@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TransferAmountInput /> render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+      Object {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#000",
+        "fontFamily": "System",
+        "fontSize": 16,
+      }
+    }
+    uppercase={false}
+  >
+    How much to transfer:
+  </Text>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderBottomWidth": 1,
+        "borderColor": "#D9D5DC",
+        "borderLeftWidth": 0,
+        "borderRadius": undefined,
+        "borderRightWidth": 0,
+        "borderTopWidth": 0,
+        "borderWidth": undefined,
+        "flexDirection": "row",
+        "margin": 10,
+        "marginLeft": 2,
+        "opacity": 1,
+      }
+    }
+  >
+    <Text />
+    <TextInput
+      allowFontScaling={true}
+      editable={true}
+      keyboardType="numeric"
+      onChangeText={[Function]}
+      placeholderTextColor="#575757"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "color": "#000",
+          "flex": 1,
+          "fontSize": 17,
+          "height": 50,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "top": 1.5,
+        }
+      }
+      underlineColorAndroid="rgba(0,0,0,0)"
+    />
+  </View>
+</View>
+`;
