@@ -35,7 +35,7 @@ export default function accountsReducer(state = initState, action) {
     case 'POST_NEW_ACCOUNT_DONE':
       return {
         ...state,
-        accounts: [...state.accounts, action.account],
+        accounts: [action.account, ...state.accounts],
         status: 'done',
       };
     case 'POST_NEW_ACCOUNT_ERROR':

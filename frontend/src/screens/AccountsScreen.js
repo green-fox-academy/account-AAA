@@ -28,8 +28,8 @@ export default function AccountsScreen({
       alert('Please transfer out remaining balance before delete!');
     } else {
       Alert.alert(
-        'DELETE',
-        `Sure you wannt to delete account: ${depositName}?`,
+        'Delete Deposit Account',
+        `\n${depositName}`,
         [
           { text: 'DELETE', onPress: () => deleteAccount(id, userId, token) },
           { text: 'CANCEL', onPress: () => {} },
