@@ -1,12 +1,11 @@
 import React from 'react';
 import QRCode from 'react-native-qrcode-svg';
 import { Text, View } from 'native-base';
-import PropTypes from 'prop-types';
 import navigationPropTypes from '../helpers/navigationPropTypes';
 import styles from '../styles/ReceiveTransferScreenStyle';
 
-export default function ReceiveTransferScreen({ userId, navigation }) {
-  const { id, depositName } = navigation.getParam('account');
+export default function ReceiveTransferScreen({ navigation }) {
+  const { id, depositName, userId } = navigation.getParam('account');
   const codeData = {
     depositId: id,
     userId,
@@ -23,6 +22,5 @@ export default function ReceiveTransferScreen({ userId, navigation }) {
 }
 
 ReceiveTransferScreen.propTypes = {
-  userId: PropTypes.number.isRequired,
   navigation: navigationPropTypes.isRequired,
 };

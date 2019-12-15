@@ -25,7 +25,7 @@ module.exports = class DatabaseActions {
     }
   }
 
-  // delete new account
+  // delete account
   async deleteAccount(depositId) {
     try {
       const deleteAccountQuery = 'DELETE FROM accounts WHERE id=?;';

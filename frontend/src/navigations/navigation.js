@@ -6,7 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AccountsScreen from '../containers/AccountsScreenContainer';
 import CreateNewAccountScreen from '../containers/CreateNewAccountScreenContainer';
 import AccountDetailScreen from '../screens/AccountDetailScreen';
-import ReceiveTransferScreen from '../containers/ReceiveTransferScreenContainer';
+import ReceiveTransferScreen from '../screens/ReceiveTransferScreen';
 import HeaderBar from '../containers/HeaderBarContainer';
 import TransferScreen from '../screens/TransferScreen';
 import InternalTransactionScreen from '../containers/TransferScreenContainers/InternalTransactionScreenContainer';
